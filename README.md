@@ -1,6 +1,12 @@
 # VaxiFlow
 VaxiFlow, An automated Nextflow based pipeline for reverse vaccinology that streamlines vaccine candidate discovery through comprehensive antigen prediction, filtering, and prioritization workflows.
 
+Requirements:
+`Nextflow` 
+`Docker` 
+`DIAMOND BLAST` 
+`seqkit` 
+
 FOR PROTEOME ANALYSIS
 ```bash
 nextflow run main.nf --proteome "DATA/protein.faa" 
