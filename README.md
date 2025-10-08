@@ -19,7 +19,7 @@ nextflow run main.nf --genomes "DATA/*.fna"
 
 FOR SINGLE GENOME ANALYSIS
 ```bash
-nextflow run main.nf --genome "DATA/GCA_000240185.2_ASM24018v2_genomic.fna" 
+nextflow run main.nf --genome "genome1.fna" 
 ```
 
 ## Credits
@@ -53,7 +53,3 @@ This pipeline integrates several third-party tools and databases. We gratefully 
 - **DeepTMHMM-1.0**  
   DeepTMHMM predicts alpha and beta transmembrane proteins using deep neural networks
   Website: https://services.healthtech.dtu.dk/services/DeepTMHMM-1.0/
-
-- **MHCnuggets I & II**  
-  High-Throughput Prediction of MHC Class I and II Neoantigens with MHCnuggets  
-  Website: https://github.com/KarchinLab/mhcnuggets
