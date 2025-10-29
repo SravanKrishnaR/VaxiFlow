@@ -20,6 +20,6 @@ process MHCNUGGETS_II {
 
    script:
    """
-   python ${MHC_II} -p ${TMR_sequence}
+   python ${MHC_II} --input ${TMR_sequence}
    """
 }
