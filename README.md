@@ -42,7 +42,7 @@ The organism for the signalp tool can be set using (default other):
 --organism other
 ```
 
-The group for the deeplocpro can be set using:
+The group for the deeplocpro can be set using (default negative):
 ```
 -g negative
 -g positive
