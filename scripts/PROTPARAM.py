@@ -27,17 +27,13 @@ def analyze_protein(seq, seq_id="unknown"):
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Compute physicochemical properties of proteins"
-    )
+    parser = argparse.ArgumentParser(description="Compute physicochemical properties of proteins")
     parser.add_argument(
         "-p", "--proteins",
         required=True,
-        help="Input protein FASTA file"
-    )
+        help="Input protein FASTA file")
     args = parser.parse_args()
 
-    # Read sequences from FASTA
     for record in SeqIO.parse(args.proteins, "fasta"):
         analyze_protein(record.seq, record.id)
 
