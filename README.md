@@ -22,6 +22,33 @@ FOR SINGLE GENOME ANALYSIS
 nextflow run main.nf --genome "genome1.fna" 
 ```
 
+To run each tool individually use the command
+```bash
+--mode unfiltered
+```
+
+The Kingdom for the Prokka tool can be set using (default Bacteria):
+```
+--kingdom Bacteria
+--kingdom Archaea
+--kingdom Bacteria
+--kingdom Mitochondria
+--kingdom Viruses
+```
+
+The organism for the signalp tool can be set using (default other):
+```
+--organism eukarya 
+--organism other
+```
+
+The group for the deeplocpro can be set using:
+```
+-g negative
+-g positive
+-g archaea
+```
+
 <img width="2550" height="1986" alt="Image" src="https://github.com/user-attachments/assets/ba09b30e-29a4-4947-a35f-81f5e2f6b9fe" />
 
 ## Credits
