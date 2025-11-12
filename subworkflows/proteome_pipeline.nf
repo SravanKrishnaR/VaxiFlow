@@ -16,7 +16,7 @@ workflow PIPELINE_PROTEOME {
         protein_sequences
 
     main:
-        if (params.mode == 'fullmatrix') {
+        if (params.mode == 'unfiltered') {
         start_ch = Channel.value(true)
         PROTEOME_IDS_ch = PROTEOME_IDS(protein_sequences,start_ch)
         VFDB_ch          = VFDB(protein_sequences, file('Databases/VFDB/VFDB_db.dmnd'), PROTEOME_IDS_ch.proteome_csv,PROTEOME_IDS_ch.ready)
