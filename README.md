@@ -22,6 +22,8 @@ FOR SINGLE GENOME ANALYSIS
 nextflow run main.nf --genome "genome1.fna" 
 ```
 
+<img width="2550" height="1986" alt="Image" src="https://github.com/user-attachments/assets/ba09b30e-29a4-4947-a35f-81f5e2f6b9fe" />
+
 ## Credits
 
 This pipeline integrates several third-party tools and databases. We gratefully acknowledge the authors and maintainers of the following resources:
