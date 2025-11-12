@@ -45,10 +45,11 @@ for record in SeqIO.parse(args.input, "fasta"):
                     results.append(df)
 
             except Exception as e:
-                print(f"⚠ Could not parse {allele} ({length}-mer): {e}")
+                print(f"Unable to parse {allele} ({length}-mer): {e}")
 
             time.sleep(5)
 
     if results:
         final_df = pd.concat(results, ignore_index=True)
+
         final_df.to_csv(f"{record.id}.csv", index=False)
