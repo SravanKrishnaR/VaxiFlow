@@ -21,7 +21,7 @@ workflow PIPELINE_BATCH_GENOME {
         genome_sequences
 
     main:
-        if (params.mode == 'fullmatrix') {
+        if (params.mode == 'unfiltered') {
         genome_ch = genome_sequences.map { file -> tuple(file.baseName, file) }
 
         PROKKA_ch = PROKKA(genome_ch)
