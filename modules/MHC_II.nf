@@ -1,16 +1,15 @@
-process MHCNUGGETS_II {
-   container 'sravankrishna47/mhcnuggets'
+process MHC_II {
+   container 'iedb:latest'
 
    publishDir "Results/MHCNUGGETS_II", mode: "copy"
 
    input:
    path TMR_sequence
    path MHC_II
-   val ready
+   path deepthmmm_csv
 
    output:
    path "filtered_predictions_classII.csv"
-   val true, emit: ready
 
    stub:
    """
@@ -20,6 +19,11 @@ process MHCNUGGETS_II {
 
    script:
    """
+   if [[ '${params.mode}' == 'filtered' && ! -s "${TMR_sequence}" ]]; then
+    echo "MHC_II: Input file TMR_sequence is empty."
+    exit 100
+fi
+
    python ${MHC_II} --input ${TMR_sequence}
    """
 }

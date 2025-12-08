@@ -3,11 +3,9 @@ process PROTEOME_IDS {
 
     input:
     path clustered_proteins
-    val ready
 
     output:
     path "proteome.csv", emit: proteome_csv
-    val true, emit: ready
 
     script:
     """

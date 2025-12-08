@@ -1,16 +1,19 @@
-process MHCNUGGETS_I {
-   container 'sravankrishna47/mhcnuggets'
+process MHC_I {
+   container 'iedb:latest'
+
+   errorStrategy {
+    task.exitStatus == 100 ? 'ignore' : 'terminate'
+}
 
    publishDir "Results/MHCNUGGETS_I", mode: "copy"
 
    input:
    path TMR_sequence
    path MHC_I
-   val ready
+   path deepthmmm_csv
 
    output:
    path "*.csv"
-   val true, emit: ready
 
    stub:
    """
@@ -20,6 +23,11 @@ process MHCNUGGETS_I {
 
    script:
    """
+   if [[ '${params.mode}' == 'filtered' && ! -s "${TMR_sequence}" ]]; then
+    echo "MHC_I: Input file TMR_sequence is empty."
+    exit 100
+fi
+
    python ${MHC_I} --input ${TMR_sequence}
    """
 }

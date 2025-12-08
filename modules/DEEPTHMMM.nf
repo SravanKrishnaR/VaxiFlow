@@ -1,14 +1,18 @@
 process DEEPTHMMM {
     publishDir "Results/DEEPTHMMM", mode: "copy"
 
+    errorStrategy {
+    task.exitStatus == 100 ? 'ignore' : 'terminate'
+}
+
     input:
     path non_toxins
-    val ready
+    path toxinpred_csv
 
     output:
     path "biolib_results/*", emit: gff3
     path non_toxins, emit: non_toxins
-    val true, emit: ready
+    path "toxinpred.csv", emit: toxinpred_csv
 
     stub:
     """
@@ -18,6 +22,11 @@ process DEEPTHMMM {
 
     script:
     """
+    if [[ '${params.mode}' == 'filtered' && ! -s "${non_toxins}" ]]; then
+    echo "DEEPTHMMM: Input file non_toxins is empty."
+    exit 100
+fi
+
     biolib run --local 'DTU/DeepTMHMM:1.0.24' --fasta ${non_toxins}
     """
 }

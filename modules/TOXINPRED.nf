@@ -1,18 +1,20 @@
 process TOXINPRED {
     container 'sravankrishna47/toxinpred3:latest'
 
+    errorStrategy {
+    task.exitStatus == 100 ? 'ignore' : 'terminate'
+}
+
     publishDir "Results/TOXINPRED", mode: "copy"
 
     input:
     path outermembrane_sequences
     path deeplocpro_csv
-    val ready
 
     output:
     path "non_toxins.fasta", emit: non_toxins
     path "TOXINPRED.ids", emit: TOXINPRED_ids
     path "toxinpred.csv", emit: toxinpred_csv
-    val true, emit: ready
 
     stub:
     """
@@ -22,6 +24,11 @@ process TOXINPRED {
 
     script:
     """
+    if [[ '${params.mode}' == 'filtered' && ! -s "${outermembrane_sequences}" ]]; then
+    echo "TOXINPRED: Input file outermembrane_sequences is empty."
+    exit 100
+fi 
+
     # Run ToxinPred3
     toxinpred3 -i ${outermembrane_sequences}
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import requests
 import pandas as pd
 import io
@@ -5,7 +6,7 @@ import argparse
 from Bio import SeqIO
 import time
 
-url="http://tools-cluster-interface.iedb.org/tools_api/mhci/"
+url = "http://tools-cluster-interface.iedb.org/tools_api/mhcii/"
 r=requests.get(url)
 
 parser=argparse.ArgumentParser(description="Input Data")
@@ -13,15 +14,13 @@ parser.add_argument('--input',type=argparse.FileType('r'),help="Input the fasta 
 args=parser.parse_args()
 
 alleles = [
-    "HLA-A*01:01","HLA-A*02:01","HLA-A*02:03","HLA-A*02:06",
-    "HLA-A*03:01","HLA-A*11:01","HLA-A*23:01","HLA-A*24:02",
-    "HLA-A*26:01","HLA-A*30:01","HLA-A*30:02","HLA-A*31:01",
-    "HLA-A*32:01","HLA-A*33:01","HLA-A*68:01","HLA-A*68:02",
-    "HLA-B*07:02","HLA-B*08:01","HLA-B*15:01","HLA-B*35:01",
-    "HLA-B*40:01","HLA-B*44:02","HLA-B*44:03","HLA-B*51:01",
-    "HLA-B*53:01","HLA-B*57:01","HLA-B*58:01"
-]
-lengths = [9, 10]
+"HLA-DRB1*01:01","HLA-DRB1*03:01","HLA-DRB1*04:01","HLA-DRB1*04:05","HLA-DRB1*07:01","HLA-DRB1*08:02",
+"HLA-DRB1*09:01","HLA-DRB1*11:01","HLA-DRB1*12:01","HLA-DRB1*13:02","HLA-DRB1*15:01","HLA-DRB3*01:01",
+"HLA-DRB3*02:02","HLA-DRB4*01:01","HLA-DRB5*01:01","HLA-DQA1*05:01/DQB1*02:01","HLA-DQA1*05:01/DQB1*03:01",
+"HLA-DQA1*03:01/DQB1*03:02","HLA-DQA1*04:01/DQB1*04:02","HLA-DQA1*01:01/DQB1*05:01","HLA-DQA1*01:02/DQB1*06:02",
+"HLA-DPA1*02:01/DPB1*01:01","HLA-DPA1*01:03/DPB1*02:01","HLA-DPA1*01:03/DPB1*04:01","HLA-DPA1*03:01/DPB1*04:02",
+"HLA-DPA1*02:01/DPB1*05:01","HLA-DPA1*02:01/DPB1*14:01",]
+lengths = [15]
 
 for record in SeqIO.parse(args.input, "fasta"):
     print((f">{record.id}\n{record.seq}"))
@@ -45,11 +44,10 @@ for record in SeqIO.parse(args.input, "fasta"):
                     results.append(df)
 
             except Exception as e:
-                print(f"Unable to parse {allele} ({length}-mer): {e}")
+                print(f"Could not parse {allele} ({length}-mer): {e}")
 
             time.sleep(5)
 
     if results:
         final_df = pd.concat(results, ignore_index=True)
-
         final_df.to_csv(f"{record.id}.csv", index=False)

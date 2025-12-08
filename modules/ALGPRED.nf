@@ -1,18 +1,20 @@
 process ALGPRED {
   container 'sravankrishna47/algpred2:latest'
 
+  errorStrategy {
+    task.exitStatus == 100 ? 'ignore' : 'terminate'
+}
+
   publishDir "Results/ALGPRED", mode: "copy"
 
   input:
   path Non_human_proteins
   path human_homologs_csv
-  val ready
 
   output:
   path "non_allergen_sequences.fasta", emit: non_allergen_sequences
   path "ALGPRED.ids", emit: ALGPRED_ids
   path "algpred.csv", emit: algpred_csv
-  val true, emit: ready
   
   stub:
   """
@@ -21,7 +23,13 @@ process ALGPRED {
 
   script:
   """
-  # Run AlgPred2
+  if [[ '${params.mode}' == 'filtered' && ! -s "${Non_human_proteins}" ]]; then
+    echo "ALGPRED: Input file Non_human_proteins is empty."
+    exit 100
+fi 
+
+
+ # Run AlgPred2
   algpred2 -i ${Non_human_proteins} -o result_allergen.csv
 
   # Extract allergen IDs from CSV (first column, skip header, strip quotes/whitespace)
@@ -41,10 +49,26 @@ process ALGPRED {
   tr -d '\\r' < ${human_homologs_csv} > human_homologs.tmp && mv human_homologs.tmp ${human_homologs_csv}
 
   # Merge with previous CSV and add ALGPRED column
-  awk 'BEGIN{FS=OFS=","}
-   NR==FNR { ids[\$1]=1; next }
-   FNR==1  { print \$0 ",ALGPRED"; next }
-   { id=\$1; print \$0 "," (id in ids ? 1 : 0) }
-  ' ALGPRED.ids ${human_homologs_csv} > algpred.csv
+  awk 'BEGIN {
+    FS=OFS=","
+    casefile = ARGV[1]
+    n = split(casefile, parts, "/")
+    base = parts[n]
+    sub(/\\.[^.]*\$/, "", base)
+    CASENAME = base
+}
+FILENAME == casefile {
+    case_count++
+    dict[\$1]=1
+    next
+}
+FNR==1 {
+    print \$0, CASENAME
+    next
+}
+{
+    print \$0, (case_count ? (\$1 in dict ? 1 : 0) : 0)
+}' ALGPRED.ids ${human_homologs_csv} > algpred.csv
+
   """
 }

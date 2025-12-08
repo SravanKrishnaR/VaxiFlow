@@ -1,18 +1,20 @@
 process DEEPLOCPRO {
     container 'sravankrishna47/deeplocpro'
 
+    errorStrategy {
+    task.exitStatus == 100 ? 'ignore' : 'terminate'
+}
+
     publishDir "Results/DEEPLOCPRO", mode: "copy"
 
     input:
     path signalp_sequences
     path signalp_csv
-    val ready
 
     output:
     path "outer_membrane.fasta", emit: outermembrane_sequences
     path "DEEPLOCPRO.ids", emit: DEEPLOCPRO_ids
     path "deeplocpro.csv", emit: deeplocpro_csv
-    val true, emit: ready
 
     stub:
     """
@@ -23,6 +25,14 @@ process DEEPLOCPRO {
     script:
     """
     export TORCH_HOME=\$PWD/.cache
+
+    # If FASTA is empty and mode is filtered → kill pipeline
+    # If FASTA is empty and mode is filtered → graceful stop
+    if [[ '${params.mode}' == 'filtered' && ! -s "${signalp_sequences}" ]]; then
+    echo "DEEPLOCPRO: No sequences to process in filtered mode — stopping gracefully."
+    exit 100
+fi
+
 
     # Clean input (DeepLocPro sometimes crashes on "*")
     sed 's/\\*//g' ${signalp_sequences} > cleaned_input.fasta
@@ -44,10 +54,25 @@ process DEEPLOCPRO {
     tr -d '\\r' < ${signalp_csv} > signalp.tmp && mv signalp.tmp ${signalp_csv}
 
     # Add DEEPLOCPRO column
-    awk 'BEGIN{FS=OFS=","}
-         NR==FNR { ids[\$1]=1; next }
-         FNR==1  { print \$0 ",DEEPLOCPRO"; next }
-         { id=\$1; print \$0 "," (id in ids ? 1 : 0) }
-    ' DEEPLOCPRO.ids ${signalp_csv} > deeplocpro.csv
+        awk 'BEGIN {
+    FS=OFS=","
+    casefile = ARGV[1]
+    n = split(casefile, parts, "/")
+    base = parts[n]
+    sub(/\\.[^.]*\$/, "", base)
+    CASENAME = base
+}
+FILENAME == casefile {
+    case_count++
+    dict[\$1]=1
+    next
+}
+FNR==1 {
+    print \$0, CASENAME
+    next
+}
+{
+    print \$0, (case_count ? (\$1 in dict ? 1 : 0) : 0)
+}' DEEPLOCPRO.ids ${signalp_csv} > deeplocpro.csv
     """
 }

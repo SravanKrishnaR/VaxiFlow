@@ -23,3 +23,4 @@ if (params.genome) {
         PIPELINE_GENOME(genome_sequence)
     }
 }
+

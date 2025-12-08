@@ -1,17 +1,20 @@
 process HUMAN_HOMOLOGS {
+  container 'diamond:latest'
+  
+  errorStrategy {
+    task.exitStatus == 100 ? 'ignore' : 'terminate'
+}
+
   publishDir "Results/HUMAN_HOMOLOGS", mode: "copy"
 
   input:
   path virulent_proteins
-  path human_db
   path vfdb_csv
-  val ready
 
   output:
   path "Non_human_proteins.fasta", emit: Non_human_proteins
   path "HUMAN_HOMOLOGS.ids", emit: HUMAN_HOMOLOGS_ids
   path "human_homologs.csv", emit: human_homologs_csv
-  val true, emit: ready
 
   stub:
   """
@@ -21,8 +24,13 @@ process HUMAN_HOMOLOGS {
 
   script:
   """
+  if [[ '${params.mode}' == 'filtered' && ! -s "${virulent_proteins}" ]]; then
+    echo "HUMAN_HOMOLOGS: Input file virulent_proteins is empty."
+    exit 100
+fi
+
   # Run diamond to find human homologs
-  diamond blastp --query ${virulent_proteins} --db ${human_db} --out human_hits.tsv --outfmt 6
+  diamond blastp --query ${virulent_proteins} --db /app/human_db.dmnd --out human_hits.tsv --outfmt 6
 
   # Extract hit IDs (proteins that are homologous to human)
   awk '\$11 <= 1e-5 && \$3 >= 30 && \$4 >= 50' human_hits.tsv | cut -f1 | sort | uniq > human_homolog_ids.txt
@@ -37,10 +45,25 @@ process HUMAN_HOMOLOGS {
   tr -d '\\r' < ${vfdb_csv} > vfdb.tmp && mv vfdb.tmp ${vfdb_csv}
 
   # Add HUMAN_HOMOLOGS column to vfdb_csv
-  awk 'BEGIN{FS=OFS=","}
-     NR==FNR { ids[\$1]=1; next }
-     FNR==1  { print \$0 ",HUMAN_HOMOLOGS"; next }
-     { id=\$1; print \$0 "," (id in ids ? 1 : 0) }
-  ' HUMAN_HOMOLOGS.ids ${vfdb_csv} > human_homologs.csv
+  awk 'BEGIN {
+    FS=OFS=","
+    casefile = ARGV[1]
+    n = split(casefile, parts, "/")
+    base = parts[n]
+    sub(/\\.[^.]*\$/, "", base)
+    CASENAME = base
+}
+FILENAME == casefile {
+    case_count++
+    dict[\$1]=1
+    next
+}
+FNR==1 {
+    print \$0, CASENAME
+    next
+}
+{
+    print \$0, (case_count ? (\$1 in dict ? 1 : 0) : 0)
+}' HUMAN_HOMOLOGS.ids ${vfdb_csv} > human_homologs.csv
   """
 }

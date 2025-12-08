@@ -1,18 +1,20 @@
 process SIGNALP {
     container 'sravankrishna47/signalp-fast'
 
+    errorStrategy {
+        params.mode == 'filtered' ? 'terminate' : 'ignore'
+    }
+
     publishDir "Results/SIGNALP", mode: "copy"
 
     input:
     path non_allergen_sequences
     path algpred_csv
-    val ready
  
     output:
     path "signalp/processed_entries.fasta", emit: signalp_sequences
     path "SIGNALP.ids", emit: SIGNALP_ids
     path "signalp.csv", emit: signalp_csv
-    val true, emit: ready
 
     stub:
     """
@@ -23,6 +25,11 @@ process SIGNALP {
 
     script:
     """
+    if [[ '${params.mode}' == 'filtered' && ! -s "${non_allergen_sequences}" ]]; then
+    echo "SIGNALP: Input file non_allergen_sequences is empty."
+    exit 100
+fi
+
     mkdir -p signalp
 
     # Run SignalP
@@ -38,10 +45,26 @@ process SIGNALP {
     tr -d '\\r' < ${algpred_csv} > algpred.tmp && mv algpred.tmp ${algpred_csv}
 
     # Add SIGNALP column
-    awk 'BEGIN{FS=OFS=","}
-         NR==FNR { ids[\$1]=1; next }
-         FNR==1  { print \$0 ",SIGNALP"; next }
-         { id=\$1; print \$0 "," (id in ids ? 1 : 0) }
-    ' SIGNALP.ids ${algpred_csv} > signalp.csv
+    awk 'BEGIN {
+    FS=OFS=","
+    casefile = ARGV[1]
+    n = split(casefile, parts, "/")
+    base = parts[n]
+    sub(/\\.[^.]*\$/, "", base)
+    CASENAME = base
+}
+FILENAME == casefile {
+    case_count++
+    dict[\$1]=1
+    next
+}
+FNR==1 {
+    print \$0, CASENAME
+    next
+}
+{
+    print \$0, (case_count ? (\$1 in dict ? 1 : 0) : 0)
+}' SIGNALP.ids ${algpred_csv} > signalp.csv
+
     """
 }

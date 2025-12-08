@@ -5,13 +5,11 @@ process DEEPTHMMM_2 {
     path gff3
     path non_toxins
     path toxinpred_csv
-    val ready
 
     output:
     path "TMR_sequences.fasta", emit: TMR_sequence
     path "DEEPTHMMM.ids", emit: DEEPTHMMM_ids
     path "deepthmmm.csv", emit: deepthmmm_csv
-    val true, emit: ready
 
     stub:
     """
@@ -39,10 +37,25 @@ process DEEPTHMMM_2 {
     tr -d '\\r' < ${toxinpred_csv} > tox.tmp && mv tox.tmp ${toxinpred_csv}
 
     # Extend CSV: 1 = has TMR, 0 = no TMR
-    awk 'BEGIN{FS=OFS=","}
-         NR==FNR { ids[\$1]=1; next }
-         FNR==1  { print \$0 ",DEEPTHMMM"; next }
-         { id=\$1; print \$0 "," (id in ids ? 1 : 0) }
-    ' DEEPTHMMM.ids ${toxinpred_csv} > deepthmmm.csv
+    awk 'BEGIN {
+    FS=OFS=","
+    casefile = ARGV[1]
+    n = split(casefile, parts, "/")
+    base = parts[n]
+    sub(/\\.[^.]*\$/, "", base)
+    CASENAME = base
+}
+FILENAME == casefile {
+    case_count++
+    dict[\$1]=1
+    next
+}
+FNR==1 {
+    print \$0, CASENAME
+    next
+}
+{
+    print \$0, (case_count ? (\$1 in dict ? 1 : 0) : 0)
+}' DEEPTHMMM.ids ${toxinpred_csv} > deepthmmm.csv
     """
 }
