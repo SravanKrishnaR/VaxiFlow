@@ -48,6 +48,6 @@ FNR==1 {
 }
 {
     print \$0, (case_count ? (\$1 in dict ? 1 : 0) : 0)
-}' VFDB.ids ${proteome_csv} > vfdb.csv
+}' vfdb.ids ${proteome_csv} > vfdb.csv
   """
 }
