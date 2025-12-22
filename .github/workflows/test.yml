@@ -23,11 +23,6 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Install system dependencies
-        run: |
-          apt-get update
-          apt-get install -y curl wget git
-
       - name: Install Nextflow
         uses: nf-core/setup-nextflow@v1
         with:
@@ -60,3 +55,4 @@ jobs:
         with:
           name: nextflow-report
           path: test_report.html
+
