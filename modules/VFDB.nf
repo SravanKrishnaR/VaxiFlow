@@ -23,7 +23,7 @@ process VFDB {
   awk '\$11 <= 1e-5 && \$3 >= 30 && \$4 >= 50' virulence_hits.tsv | cut -f1 | sort | uniq > virulence_ids.txt
   seqkit grep -f virulence_ids.txt ${protein_sequences} > virulent_proteins.fasta
 
-  awk '/^>/ {sub(/^>/,""); print \$1}' virulent_proteins.fasta > VFDB.ids
+  awk '/^>/ {sub(/^>/,""); print \$1}' virulent_proteins.fasta > vfdb.ids
 
   # Ensure proteome_csv has UNIX line endings (avoid \r problems)
   tr -d '\r' < ${proteome_csv} > proteome.csv.tmp && mv proteome.csv.tmp ${proteome_csv}
