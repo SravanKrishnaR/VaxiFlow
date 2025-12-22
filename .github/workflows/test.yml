@@ -32,11 +32,6 @@ jobs:
         run: |
           echo "conda.enabled = true" >> nextflow.config
 
-      - name: Install Docker CLI
-        run: |
-          apt-get update
-          apt-get install -y docker.io
-
       - name: Run VaxiFlow test pipeline
         run: |
           nextflow run main.nf \
@@ -50,5 +45,6 @@ jobs:
         with:
           name: nextflow-report
           path: test_report.html
+
 
 
