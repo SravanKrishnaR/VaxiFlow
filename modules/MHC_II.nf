@@ -1,7 +1,11 @@
 process MHC_II {
-   container 'iedb:latest'
+   conda "bin/envs/mhc_iedb.yml"
+   
+   errorStrategy {
+	task.exitStatus == 100 ? 'ignore' : 'terminate'
+   }
 
-   publishDir "Results/MHCNUGGETS_II", mode: "copy"
+   publishDir "Results/MHC_II", mode: "copy"
 
    input:
    path TMR_sequence
@@ -9,7 +13,7 @@ process MHC_II {
    path deepthmmm_csv
 
    output:
-   path "filtered_predictions_classII.csv"
+   path "*.csv"
 
    stub:
    """

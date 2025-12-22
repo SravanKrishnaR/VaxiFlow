@@ -1,4 +1,6 @@
 process DEEPTHMMM_2 {
+    container 'staphb/seqkit:latest'
+
     publishDir "Results/DEEPTHMMM", mode: "copy"
 
     input:

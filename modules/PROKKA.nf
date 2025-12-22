@@ -16,10 +16,11 @@ process PROKKA {
     """
     mkdir -p ${meta}
     prokka --force \
-           --cpu ${params.cpus} \
+           --cpu ${task.cpus} \
            --kingdom ${params.kingdom} \
            --prefix ${meta} \
            --outdir ${meta} \
+	   --gram ${params.gram} \
            ${genome}
     cp ${meta}/${meta}.gff .
     cp ${meta}/${meta}.faa .

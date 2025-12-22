@@ -1,4 +1,6 @@
 process DEEPTHMMM {
+    conda "bin/envs/deepthmmm.yml"
+
     publishDir "Results/DEEPTHMMM", mode: "copy"
 
     errorStrategy {

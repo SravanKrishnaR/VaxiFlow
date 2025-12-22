@@ -1,8 +1,8 @@
 process DEEPLOCPRO {
-    container 'sravankrishna47/deeplocpro'
+    container 'sravankrishna47/deeplocpro:latest'
 
     errorStrategy {
-    task.exitStatus == 100 ? 'ignore' : 'terminate'
+      task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
     publishDir "Results/DEEPLOCPRO", mode: "copy"
@@ -38,7 +38,7 @@ fi
     sed 's/\\*//g' ${signalp_sequences} > cleaned_input.fasta
 
     # Run DeepLocPro
-    deeplocpro -f cleaned_input.fasta -o deeploc_output -g ${params.group}
+    deeplocpro -f cleaned_input.fasta -o deeploc_output -g ${params.group} -d ${params.device}
 
     # Extract subcellular location info
     mv deeploc_output/results_*.csv deeploc_results.csv

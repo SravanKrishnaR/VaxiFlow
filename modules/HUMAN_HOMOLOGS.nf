@@ -1,5 +1,5 @@
 process HUMAN_HOMOLOGS {
-  container 'diamond:latest'
+  container 'sravankrishna47/homologyfilter:latest'
   
   errorStrategy {
     task.exitStatus == 100 ? 'ignore' : 'terminate'

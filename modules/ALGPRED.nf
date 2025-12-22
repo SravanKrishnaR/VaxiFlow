@@ -30,7 +30,7 @@ fi
 
 
  # Run AlgPred2
-  algpred2 -i ${Non_human_proteins} -o result_allergen.csv
+  algpred2 -i ${Non_human_proteins} -o result_allergen.csv --threshold ${params.threshold} --model ${params.model} --display ${params.algpredDisplay}
 
   # Extract allergen IDs from CSV (first column, skip header, strip quotes/whitespace)
   tr -d '\\r' < result_allergen.csv \\

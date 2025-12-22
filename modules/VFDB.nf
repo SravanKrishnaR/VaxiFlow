@@ -1,5 +1,5 @@
 process VFDB {
-  container 'diamond:latest'
+  container 'sravankrishna47/homologyfilter:latest'
 
   publishDir "Results/VFDB", mode: 'copy'
 

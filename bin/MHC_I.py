@@ -6,7 +6,7 @@ import argparse
 from Bio import SeqIO
 import time
 
-url="http://tools-cluster-interface.iedb.org/tools_api/mhci/"
+url="https://tools-cluster-interface.iedb.org/tools_api/mhci/"
 r=requests.get(url)
 
 parser=argparse.ArgumentParser(description="Input Data")
@@ -38,8 +38,8 @@ for record in SeqIO.parse(args.input, "fasta"):
                 }
 
             print(f"Processing {allele} ({length}-mer)")
-            response = requests.post(url, data=data)
-        
+            response = requests.post(url, data=data, timeout=60)
+
             try:
                 df = pd.read_csv(io.StringIO(response.text), sep="\t")
                 if df.shape[0] > 0:

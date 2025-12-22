@@ -1,5 +1,5 @@
 process SIGNALP {
-    container 'sravankrishna47/signalp-fast'
+    container 'sravankrishna47/signalp-fast:latest'
 
     errorStrategy {
         params.mode == 'filtered' ? 'terminate' : 'ignore'
@@ -33,10 +33,11 @@ fi
     mkdir -p signalp
 
     # Run SignalP
-    signalp6 --fastafile ${non_allergen_sequences} \
+        signalp6 --fastafile ${non_allergen_sequences} \
              --organism ${params.organism} \
              --output_dir signalp \
-             --format txt --mode fast
+             --format ${params.format} --mode fast
+
 
     # Extract pure IDs (remove ">" and keep only first token)
     awk '/^>/ {sub(/^>/,""); print \$1}' signalp/processed_entries.fasta > SIGNALP.ids

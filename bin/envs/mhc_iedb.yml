@@ -1,0 +1,11 @@
+name: mhc_iedb
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - requests
+  - pandas
+  - biopython
+  - numpy
+  - pip
