@@ -28,11 +28,6 @@ jobs:
         with:
           version: latest-stable
 
-      - name: Install system tools required by Nextflow
-        run: |
-          apt-get update
-          apt-get install -y procps coreutils
-
       - name: Enable Conda in Nextflow
         run: |
           echo "conda.enabled = true" >> nextflow.config
@@ -55,4 +50,5 @@ jobs:
         with:
           name: nextflow-report
           path: test_report.html
+
 
