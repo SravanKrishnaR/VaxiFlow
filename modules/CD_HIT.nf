@@ -18,6 +18,6 @@ process CD_HIT {
 	   -o clustered.faa \
 	   -c ${params.SequenceIdentity} \
 	   -n ${params.WordLength} \
-	   -d ${parmas.DescpLength}
+	   -d ${params.DescpLength}
     """
 }
