@@ -36,7 +36,7 @@ jobs:
         run: |
           nextflow run main.nf \
             -profile test_proteome \
-            --mode unfiltered \
+            --mode filtered \
             -with-report test_report.html \
             -with-trace test_trace.txt
 
@@ -45,6 +45,7 @@ jobs:
         with:
           name: nextflow-report
           path: test_report.html
+
 
 
 
