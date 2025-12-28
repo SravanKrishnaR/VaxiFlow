@@ -27,10 +27,10 @@ workflow PIPELINE_PROTEOME {
 	DEEPTHMMM_ch     = DEEPTHMMM(protein_sequences, TOXINPRED_ch.toxinpred_csv)
         DEEPTHMMM2_ch    = DEEPTHMMM_2(DEEPTHMMM_ch.gff3, DEEPTHMMM_ch.non_toxins, DEEPTHMMM_ch.toxinpred_csv)
         
-        PROTPARAM_ch = PROTPARAM(protein_sequences, file("bin/PROTPARAM.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        PROTPARAM_ch = PROTPARAM(protein_sequences, file("${projectDir}/bin/PROTPARAM.py"), DEEPTHMMM2_ch.deepthmmm_csv)
 
-        MHC_I(protein_sequences, file("bin/MHC_I.py"), DEEPTHMMM2_ch.deepthmmm_csv)
-        MHC_II(protein_sequences, file("bin/MHC_II.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        MHC_I(protein_sequences, file("${projectDir}/bin/MHC_I.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        MHC_II(protein_sequences, file("${projectDir}/bin/MHC_II.py"), DEEPTHMMM2_ch.deepthmmm_csv)
 
         } 
         else if (params.mode == 'filtered') {
@@ -44,9 +44,9 @@ workflow PIPELINE_PROTEOME {
         DEEPTHMMM_ch = DEEPTHMMM(TOXINPRED_ch.non_toxins,TOXINPRED_ch.toxinpred_csv)
         DEEPTHMMM2_ch = DEEPTHMMM_2(DEEPTHMMM_ch.gff3, DEEPTHMMM_ch.non_toxins,DEEPTHMMM_ch.toxinpred_csv)
 
-        PROTPARAM_ch = PROTPARAM(DEEPTHMMM2_ch.TMR_sequence, file("bin/PROTPARAM.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        PROTPARAM_ch = PROTPARAM(DEEPTHMMM2_ch.TMR_sequence, file("${projectDir}/bin/PROTPARAM.py"), DEEPTHMMM2_ch.deepthmmm_csv)
 
-        MHC_I(DEEPTHMMM2_ch.TMR_sequence, file("bin/MHC_I.py"), DEEPTHMMM2_ch.deepthmmm_csv)
-        MHC_II(DEEPTHMMM2_ch.TMR_sequence, file("bin/MHC_II.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        MHC_I(DEEPTHMMM2_ch.TMR_sequence, file("${projectDir}/bin/MHC_I.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        MHC_II(DEEPTHMMM2_ch.TMR_sequence, file("${projectDir}/bin/MHC_II.py"), DEEPTHMMM2_ch.deepthmmm_csv)
         }
 }

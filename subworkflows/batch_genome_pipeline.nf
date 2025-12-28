@@ -46,10 +46,10 @@ workflow PIPELINE_BATCH_GENOME {
         TOXINPRED_ch     = TOXINPRED(CD_HIT_ch.clustered_proteins, DEEPLOCPRO_ch.deeplocpro_csv)
         DEEPTHMMM_ch     = DEEPTHMMM(CD_HIT_ch.clustered_proteins, TOXINPRED_ch.toxinpred_csv)
         DEEPTHMMM2_ch    = DEEPTHMMM_2(DEEPTHMMM_ch.gff3, DEEPTHMMM_ch.non_toxins, TOXINPRED_ch.toxinpred_csv)
-        PROTPARAM_ch     = PROTPARAM(CD_HIT_ch.clustered_proteins, file("bin/PROTPARAM.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        PROTPARAM_ch     = PROTPARAM(CD_HIT_ch.clustered_proteins, file("${projectDir}/bin/PROTPARAM.py"), DEEPTHMMM2_ch.deepthmmm_csv)
   
-        MHC_I(CD_HIT_ch.clustered_proteins, file("bin/MHC_I.py"), DEEPTHMMM2_ch.deepthmmm_csv)
-        MHC_II(CD_HIT_ch.clustered_proteins, file("bin/MHC_II.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        MHC_I(CD_HIT_ch.clustered_proteins, file("${projectDir}/bin/MHC_I.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        MHC_II(CD_HIT_ch.clustered_proteins, file("${projectDir}/bin/MHC_II.py"), DEEPTHMMM2_ch.deepthmmm_csv)
         
         }
         else if (params.mode == 'filtered') {
@@ -79,10 +79,10 @@ workflow PIPELINE_BATCH_GENOME {
         DEEPTHMMM_ch = DEEPTHMMM(TOXINPRED_ch.non_toxins, TOXINPRED_ch.toxinpred_csv)
         DEEPTHMMM2_ch = DEEPTHMMM_2(DEEPTHMMM_ch.gff3, DEEPTHMMM_ch.non_toxins,TOXINPRED_ch.toxinpred_csv)
 
-        PROTPARAM_ch = PROTPARAM(DEEPTHMMM2_ch.TMR_sequence, file("scripts/PROTPARAM.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        PROTPARAM_ch = PROTPARAM(DEEPTHMMM2_ch.TMR_sequence, file("${projectDir}/scripts/PROTPARAM.py"), DEEPTHMMM2_ch.deepthmmm_csv)
 
-        MHC_I(DEEPTHMMM2_ch.TMR_sequence, file("bin/MHC_I.py"), DEEPTHMMM2_ch.deepthmmm_csv)
-        MHC_II(DEEPTHMMM2_ch.TMR_sequence, file("bin/MHC_II.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        MHC_I(DEEPTHMMM2_ch.TMR_sequence, file("${projectDir}/bin/MHC_I.py"), DEEPTHMMM2_ch.deepthmmm_csv)
+        MHC_II(DEEPTHMMM2_ch.TMR_sequence, file("${projectDir}/bin/MHC_II.py"), DEEPTHMMM2_ch.deepthmmm_csv)
         }
 }
 
