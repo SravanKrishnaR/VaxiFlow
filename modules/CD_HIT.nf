@@ -14,10 +14,6 @@ process CD_HIT {
 
     script:
     """
-    cd-hit -i ${protein_sequences} \ 
-	   -o clustered.faa \
-	   -c ${params.SequenceIdentity} \
-	   -n ${params.WordLength} \
-	   -d ${params.DescpLength}
+    cd-hit -i ${protein_sequences} -o clustered.faa -c ${params.SequenceIdentity} -n ${params.WordLength} -d ${params.DescpLength}
     """
 }

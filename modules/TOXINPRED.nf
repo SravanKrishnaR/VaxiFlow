@@ -30,11 +30,7 @@ process TOXINPRED {
 fi 
 
     # Run ToxinPred3
-    toxinpred3 -i ${outermembrane_sequences} \
-	       -o outfile.csv \
-	       --threshold ${params.threshold} \
-	       --model ${params.model} \
-	       --display ${params.toxinpredDisplay}
+    toxinpred3 -i ${outermembrane_sequences} -o outfile.csv --threshold ${params.threshold} --model ${params.model} --display ${params.toxinpredDisplay}
 
     # Collect sequence IDs predicted as Non-Toxin
     awk -F ',' 'NR > 1 && \$6 == "Non-Toxin" {print \$1}' outfile.csv > seq_id.txt

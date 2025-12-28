@@ -33,10 +33,7 @@ fi
     mkdir -p signalp
 
     # Run SignalP
-        signalp6 --fastafile ${non_allergen_sequences} \
-             --organism ${params.organism} \
-             --output_dir signalp \
-             --format ${params.format} --mode fast
+    signalp6 --fastafile ${non_allergen_sequences} --organism ${params.organism} --output_dir signalp --format ${params.format} --mode fast
 
 
     # Extract pure IDs (remove ">" and keep only first token)

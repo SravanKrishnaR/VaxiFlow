@@ -15,13 +15,7 @@ process PROKKA {
     script:
     """
     mkdir -p ${meta}
-    prokka --force \
-           --cpu ${task.cpus} \
-           --kingdom ${params.kingdom} \
-           --prefix ${meta} \
-           --outdir ${meta} \
-	   --gram ${params.gram} \
-           ${genome}
+    prokka --force --cpu ${task.cpus} --kingdom ${params.kingdom} --prefix ${meta} --outdir ${meta} --gram ${params.gram} ${genome}
     cp ${meta}/${meta}.gff .
     cp ${meta}/${meta}.faa .
     """
