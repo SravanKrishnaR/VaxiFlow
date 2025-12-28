@@ -1,5 +1,5 @@
 process DEEPTHMMM {
-    conda "bin/envs/deepthmmm.yml"
+    conda "${projectDir}/bin/envs/deepthmmm.yml"
 
     publishDir "Results/DEEPTHMMM", mode: "copy"
 

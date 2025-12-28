@@ -1,5 +1,5 @@
 process MHC_I {
-   conda "bin/envs/mhc_iedb.yml"
+   conda "${projectDir}/bin/envs/mhc_iedb.yml"
    errorStrategy {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
