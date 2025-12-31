@@ -15,6 +15,7 @@ process DEEPLOCPRO {
     path "outer_membrane.fasta", emit: outermembrane_sequences
     path "DEEPLOCPRO.ids", emit: DEEPLOCPRO_ids
     path "deeplocpro.csv", emit: deeplocpro_csv
+    path "deeploc_output"
 
     stub:
     """

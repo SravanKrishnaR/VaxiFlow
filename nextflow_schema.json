@@ -1,93 +1,76 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VaxiFlow",
-  "description": "Automated reverse vaccinology pipeline for genome- and proteome-based vaccine candidate discovery",
-  "type": "object",
+  "description": "Automated reverse vaccinology pipeline for protein prioritization of genome and proteome-based vaccine candidate discovery",
 
   "$defs": {
-    "Input modes": {
+    "INPUT MODE": {
       "description": "Define the biological input used to run the pipeline. Exactly one input mode must be provided.",
       "properties": {
         "genome": {
-          "type": "string",
           "description": "Single genome FASTA file for analysis",
           "format": "file-path"
         },
         "genomes": {
-          "type": "string",
           "description": "Multiple genome FASTA files for batch analysis",
           "format": "file-path"
         },
         "proteome": {
-          "type": "string",
           "description": "Proteome FASTA file for protein-level reverse vaccinology analysis",
           "format": "file-path"
         }
       }
     },
 
-    "Pipeline configuration": {
+    "PIPELINE CONFIGURATIONS": {
       "properties": {
         "outdir": {
-          "type": "string",
           "description": "Directory where pipeline results will be written",
           "default": "Results",
           "format": "directory-path"
         },
         "cpus": {
-          "type": "integer",
           "description": "Number of CPUs allocated per process",
           "default": 12
         },
         "memory": {
-          "type": "string",
           "description": "Memory allocated per process",
           "default": "8 GB"
         },
         "publish_mode": {
-          "type": "string",
           "description": "File publishing strategy for process outputs",
           "enum": ["copy", "link"],
           "default": "copy"
         },
         "pipeline_report": {
-          "type": "string",
           "description": "Prefix for the pipeline execution report",
           "default": "pipeline_report"
         },
         "monochrome_logs": {
-          "type": "boolean",
           "description": "Disable colored log output",
           "default": false
         }
       }
     },
 
-    "Execution mode": {
+    "EXECUTION MODE": {
       "properties": {
-        "filtered": {
-          "type": "boolean",
+        "mode": {
           "description": "Run the pipeline with all filtering steps enabled",
-          "default": true
+          "enum": ["filtered", "unfiltered"],
+          "default": "filtered"
         },
-        "unfiltered": {
-          "type": "boolean",
-          "description": "Run tools independently without applying downstream filters",
-          "default": false
-        }
       }
     },
 
-    "PROKKA options": {
+    "PROKKA": {
       "properties": {
         "kingdom": {
-          "type": "string",
           "description": "Kingdom used for genome annotation",
           "enum": ["Bacteria", "Archaea", "Mitochondria", "Viruses"],
           "default": "Bacteria"
         },
         "gram": {
-          "type": "string",
           "description": "Gram staining classification for genome annotation",
           "enum": ["pos", "neg", "''"],
           "default": "neg"
@@ -95,70 +78,56 @@
       }
     },
 
-    "ROARY options": {
+    "ROARY": {
       "properties": {
         "identity": {
-          "type": "integer",
           "description": "Minimum percentage identity for core gene clustering",
           "default": 95
         }
       }
     },
 
-    "CD-HIT options": {
+    "CD-HIT": {
       "properties": {
         "SequenceIdentity": {
-          "type": "number",
           "description": "Sequence identity threshold for clustering",
           "default": 0.9
         },
         "WordLength": {
-          "type": "integer",
           "description": "Word length for CD-HIT clustering",
           "default": 5
         },
         "DescpLength": {
-          "type": "integer",
           "description": "Description length in CD-HIT output",
           "default": 0
         }
       }
     },
 
-    "ToxinPred options": {
+    "TOXINPRED": {
       "properties": {
-        "threshold": {
-          "type": "number",
+        "ToxinThreshold": {
           "description": "Prediction score threshold for toxin classification",
           "minimum": 0,
           "maximum": 1,
           "default": 0.38
         },
         "model": {
-          "type": "integer",
           "description": "Prediction model to use (1: AAC+DPC ET, 2: Hybrid)",
           "enum": [1, 2],
           "default": 1
         },
-        "toxinpredDisplay": {
-          "type": "integer",
-          "description": "Output type (1: toxins only, 2: all peptides)",
-          "enum": [1, 2],
-          "default": 2
-        }
       }
     },
 
-    "DeepLocPro options": {
+    "DEEPLOCPRO": {
       "properties": {
         "group": {
-          "type": "string",
           "description": "Organism group for localization prediction",
           "enum": ["negative", "positive", "archaea"],
           "default": "negative"
         },
         "device": {
-          "type": "string",
           "description": "Compute device used for prediction",
           "enum": ["cpu", "cuda", "mps"],
           "default": "cpu"
@@ -166,46 +135,25 @@
       }
     },
 
-    "AlgPred options": {
+    "ALGPRED": {
       "properties": {
-        "threshold": {
-          "type": "number",
+        "AllergenThreshold": {
           "description": "Prediction score threshold for allergenicity",
           "minimum": 0,
           "maximum": 1,
           "default": 0.3
         },
-        "model": {
-          "type": "integer",
-          "description": "Prediction model (1: Allergen, 2: Non-allergen)",
-          "enum": [1, 2],
-          "default": 1
-        },
-        "algpredDisplay": {
-          "type": "integer",
-          "description": "Output type (1: allergens only, 2: all peptides)",
-          "enum": [1, 2],
-          "default": 1
-        }
       }
     },
 
-    "SignalP options": {
+    "SIGNALP": {
       "properties": {
         "organism": {
-          "type": "string",
           "description": "Target organism group",
           "enum": ["other", "eukarya"],
           "default": "other"
         },
-        "format": {
-          "type": "string",
-          "description": "Output format",
-          "enum": ["txt", "png", "eps", "all", "none"],
-          "default": "txt"
-        },
         "signalpMode": {
-          "type": "string",
           "description": "Prediction mode",
           "enum": ["fast", "slow", "slow-sequential"],
           "default": "fast"
@@ -216,15 +164,12 @@
 
   "properties": {
     "help": {
-      "type": ["boolean", "string"],
       "description": "Show pipeline help message"
     },
     "helpFull": {
-      "type": "boolean",
       "description": "Show full help including nested parameters"
     },
     "showHidden": {
-      "type": "boolean",
       "description": "Show hidden parameters"
     }
   }

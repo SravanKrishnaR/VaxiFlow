@@ -1,0 +1,90 @@
+
+=== Results for tr|W1DSA1|W1DSA1_KLEPN ===
+Length: 153
+Molecular weight: 16655.22
+Isoelectric point (pI): 5.59
+GRAVY: -0.655
+Instability index: 48.26
+Aromaticity: 0.072
+Aliphatic index: 67.06
+
+=== Results for tr|W1DSY0|W1DSY0_KLEPN ===
+Length: 290
+Molecular weight: 31873.44
+Isoelectric point (pI): 9.45
+GRAVY: -0.124
+Instability index: 32.94
+Aromaticity: 0.062
+Aliphatic index: 87.24
+
+=== Results for tr|W1DF10|W1DF10_KLEPN ===
+Length: 49
+Molecular weight: 5376.97
+Isoelectric point (pI): 9.19
+GRAVY: -0.486
+Instability index: 57.51
+Aromaticity: 0.102
+Aliphatic index: 65.71
+
+=== Results for tr|W1DFT0|W1DFT0_KLEPN ===
+Length: 154
+Molecular weight: 16033.89
+Isoelectric point (pI): 4.83
+GRAVY: 0.159
+Instability index: 45.28
+Aromaticity: 0.071
+Aliphatic index: 83.64
+
+=== Results for tr|W1DG27|W1DG27_KLEPN ===
+Length: 160
+Molecular weight: 17108.94
+Isoelectric point (pI): 8.06
+GRAVY: -0.200
+Instability index: 26.69
+Aromaticity: 0.081
+Aliphatic index: 76.81
+
+=== Results for tr|W1DKF4|W1DKF4_KLEPN ===
+Length: 200
+Molecular weight: 22781.60
+Isoelectric point (pI): 9.80
+GRAVY: -0.491
+Instability index: 37.66
+Aromaticity: 0.070
+Aliphatic index: 88.75
+
+=== Results for tr|W1DSK6|W1DSK6_KLEPN ===
+Length: 358
+Molecular weight: 39364.38
+Isoelectric point (pI): 5.32
+GRAVY: -0.175
+Instability index: 36.57
+Aromaticity: 0.075
+Aliphatic index: 93.35
+
+=== Results for tr|W1DSM7|W1DSM7_KLEPN ===
+Length: 444
+Molecular weight: 48709.00
+Isoelectric point (pI): 5.94
+GRAVY: -0.234
+Instability index: 47.90
+Aromaticity: 0.081
+Aliphatic index: 91.80
+
+=== Results for tr|W1DTS1|W1DTS1_KLEPN ===
+Length: 307
+Molecular weight: 32440.27
+Isoelectric point (pI): 9.08
+GRAVY: -0.096
+Instability index: 31.52
+Aromaticity: 0.081
+Aliphatic index: 77.79
+
+=== Results for tr|W1DU99|W1DU99_KLEPN ===
+Length: 575
+Molecular weight: 58843.43
+Isoelectric point (pI): 6.35
+GRAVY: -0.165
+Instability index: 14.94
+Aromaticity: 0.049
+Aliphatic index: 83.30

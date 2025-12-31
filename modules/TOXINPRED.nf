@@ -15,6 +15,7 @@ process TOXINPRED {
     path "non_toxins.fasta", emit: non_toxins
     path "TOXINPRED.ids", emit: TOXINPRED_ids
     path "toxinpred.csv", emit: toxinpred_csv
+    path "outfile.csv"
 
     stub:
     """
@@ -30,10 +31,10 @@ process TOXINPRED {
 fi 
 
     # Run ToxinPred3
-    toxinpred3 -i ${outermembrane_sequences} -o outfile.csv --threshold ${params.threshold} --model ${params.model} --display ${params.toxinpredDisplay}
+    toxinpred3 -i ${outermembrane_sequences} -o outfile.csv --threshold ${params.ToxinThreshold} --model ${params.model}
 
     # Collect sequence IDs predicted as Non-Toxin
-    awk -F ',' 'NR > 1 && \$6 == "Non-Toxin" {print \$1}' outfile.csv > seq_id.txt
+    awk -F',' 'NR==1{for(i=1;i<=NF;i++)if(\$i=="Prediction")pred_col=i;if(!pred_col){print "ERROR: Prediction column not found">"/dev/stderr";exit 1}next}\$pred_col=="Non-Toxin"{print \$1}' outfile.csv > seq_id.txt
 
     # Make filtered FASTA and ID list
     seqkit grep -f seq_id.txt ${outermembrane_sequences} > non_toxins.fasta

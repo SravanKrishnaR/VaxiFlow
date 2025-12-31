@@ -15,6 +15,7 @@ process SIGNALP {
     path "signalp/processed_entries.fasta", emit: signalp_sequences
     path "SIGNALP.ids", emit: SIGNALP_ids
     path "signalp.csv", emit: signalp_csv
+    path "signalp"
 
     stub:
     """
@@ -33,7 +34,7 @@ fi
     mkdir -p signalp
 
     # Run SignalP
-    signalp6 --fastafile ${non_allergen_sequences} --organism ${params.organism} --output_dir signalp --format ${params.format} --mode fast
+    signalp6 --fastafile ${non_allergen_sequences} --organism ${params.organism} --output_dir signalp --mode ${params.signalpMode}
 
 
     # Extract pure IDs (remove ">" and keep only first token)
