@@ -1,5 +1,5 @@
 process PROTEOME_IDS {
-    publishDir "Results/PROTEOME_IDS", mode: 'copy'
+    publishDir "${params.outdir}/PROTEOME_IDS", mode: 'copy'
 
     input:
     path clustered_proteins

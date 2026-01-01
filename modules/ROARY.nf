@@ -3,7 +3,7 @@ process ROARY {
     tag "ROARY_pan_genome"
 
     container 'biocontainers/roary:v3.12.0dfsg-2-deb_cv1'
-    publishDir "Results/ROARY", mode: 'copy'
+    publishDir "${params.outdir}/ROARY", mode: 'copy'
 
     input:
     path gff_ch 

@@ -5,7 +5,7 @@ process HUMAN_HOMOLOGS {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-  publishDir "Results/HUMAN_HOMOLOGS", mode: "copy"
+  publishDir "${params.outdir}/HUMAN_HOMOLOGS", mode: "copy"
 
   input:
   path virulent_proteins

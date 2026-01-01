@@ -1,7 +1,7 @@
 process ROARY_2 {
     label 'light'
 
-    publishDir "Results/ROARY", mode: 'copy'
+    publishDir "${params.outdir}/ROARY", mode: 'copy'
 
     input:
     path summary_statistics

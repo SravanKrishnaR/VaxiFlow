@@ -5,7 +5,7 @@ process TOXINPRED {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-    publishDir "Results/TOXINPRED", mode: "copy"
+    publishDir "${params.outdir}/TOXINPRED", mode: "copy"
 
     input:
     path outermembrane_sequences

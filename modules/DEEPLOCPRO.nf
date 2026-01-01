@@ -5,7 +5,7 @@ process DEEPLOCPRO {
       task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-    publishDir "Results/DEEPLOCPRO", mode: "copy"
+    publishDir "${params.outdir}/DEEPLOCPRO", mode: "copy"
 
     input:
     path signalp_sequences
@@ -15,7 +15,7 @@ process DEEPLOCPRO {
     path "outer_membrane.fasta", emit: outermembrane_sequences
     path "DEEPLOCPRO.ids", emit: DEEPLOCPRO_ids
     path "deeplocpro.csv", emit: deeplocpro_csv
-    path "deeploc_output"
+    path "deeploc_results.csv"
 
     stub:
     """
@@ -45,7 +45,7 @@ fi
     mv deeploc_output/results_*.csv deeploc_results.csv
 
     # Collect IDs that are Outer Membrane or Extracellular
-    awk -F',' '\$3 == "Outer Membrane" || \$3 == "Extracellular" {print \$2}' deeploc_results.csv > ids.txt
+    awk -F',' '\$3 == "Outer Membrane" || \$3 == "Extracellular" || \$3 == "Cell wall & surface" {print \$2}' deeploc_results.csv > ids.txt
 
     # Build filtered FASTA + ID list
     seqkit grep -f ids.txt ${signalp_sequences} > outer_membrane.fasta

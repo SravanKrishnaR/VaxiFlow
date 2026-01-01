@@ -1,10 +1,11 @@
 process MHC_I {
    conda "${projectDir}/bin/envs/mhc_iedb.yml"
+
    errorStrategy {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-   publishDir "Results/MHC_I", mode: "copy"
+   publishDir "${params.outdir}/MHC_I", mode: "copy"
 
    input:
    path TMR_sequence

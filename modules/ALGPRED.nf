@@ -5,7 +5,7 @@ process ALGPRED {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-  publishDir "Results/ALGPRED", mode: "copy"
+  publishDir "${params.outdir}/ALGPRED", mode: "copy"
 
   input:
   path Non_human_proteins

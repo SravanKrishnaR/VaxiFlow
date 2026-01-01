@@ -1,7 +1,7 @@
 process DEEPTHMMM_2 {
     container 'staphb/seqkit:latest'
 
-    publishDir "Results/DEEPTHMMM", mode: "copy"
+    publishDir "${params.outdir}/DEEPTHMMM", mode: "copy"
 
     input:
     path gff3

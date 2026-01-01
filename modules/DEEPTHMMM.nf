@@ -1,7 +1,7 @@
 process DEEPTHMMM {
     conda "${projectDir}/bin/envs/deepthmmm.yml"
 
-    publishDir "Results/DEEPTHMMM", mode: "copy"
+    publishDir "${params.outdir}/DEEPTHMMM", mode: "copy"
 
     errorStrategy {
     task.exitStatus == 100 ? 'ignore' : 'terminate'

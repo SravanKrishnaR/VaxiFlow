@@ -1,7 +1,7 @@
 process VFDB {
   container 'sravankrishna47/homologyfilter:latest'
 
-  publishDir "Results/VFDB", mode: 'copy'
+  publishDir "${params.outdir}/VFDB", mode: 'copy'
 
   input:
   path protein_sequences

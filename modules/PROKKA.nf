@@ -3,7 +3,7 @@ process PROKKA {
     tag "${meta}"
 
     container 'staphb/prokka'
-    publishDir "Results/PROKKA", mode: 'copy'
+    publishDir "${params.outdir}/PROKKA", mode: 'copy'
 
     input:
     tuple val(meta), path(genome)

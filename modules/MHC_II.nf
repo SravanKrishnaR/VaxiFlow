@@ -5,7 +5,7 @@ process MHC_II {
 	task.exitStatus == 100 ? 'ignore' : 'terminate'
    }
 
-   publishDir "Results/MHC_II", mode: "copy"
+   publishDir "${params.outdir}/MHC_II", mode: "copy"
 
    input:
    path TMR_sequence

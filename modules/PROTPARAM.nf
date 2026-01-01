@@ -1,5 +1,5 @@
 process PROTPARAM {
-  publishDir "Results/PROTPARAM", mode: "copy", createDirs: true
+  publishDir "${params.outdir}/PROTPARAM", mode: "copy"
 
   errorStrategy {
     task.exitStatus == 100 ? 'ignore' : 'terminate'

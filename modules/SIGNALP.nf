@@ -5,7 +5,7 @@ process SIGNALP {
         params.mode == 'filtered' ? 'terminate' : 'ignore'
     }
 
-    publishDir "Results/SIGNALP", mode: "copy"
+    publishDir "${params.outdir}/SIGNALP", mode: "copy"
 
     input:
     path non_allergen_sequences
@@ -34,7 +34,7 @@ fi
     mkdir -p signalp
 
     # Run SignalP
-    signalp6 --fastafile ${non_allergen_sequences} --organism ${params.organism} --output_dir signalp --mode ${params.signalpMode}
+    signalp6 --fastafile ${non_allergen_sequences} --organism ${params.organism} --output_dir signalp --mode ${params.signalpMode} || true
 
 
     # Extract pure IDs (remove ">" and keep only first token)

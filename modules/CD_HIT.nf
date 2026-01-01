@@ -1,7 +1,7 @@
 process CD_HIT {
     label 'light'
 
-    publishDir "Results/CD_HIT", mode: 'copy'
+    publishDir "${params.outdir}/CD_HIT", mode: 'copy'
 
     container 'biocontainers/cd-hit:v4.6.8-2-deb_cv1'
 
