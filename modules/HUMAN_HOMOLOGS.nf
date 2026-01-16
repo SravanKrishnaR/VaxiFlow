@@ -5,16 +5,15 @@ process HUMAN_HOMOLOGS {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-  publishDir "${params.outdir}/HUMAN_HOMOLOGS", mode: "copy"
+  publishDir "${params.outdir}/HUMAN_HOMOLOGS/${name}", mode: "copy"
 
   input:
-  path virulent_proteins
-  path vfdb_csv
+  tuple val(name), path(virulent_proteins), path(vfdb_csv)
 
   output:
-  path "Non_human_proteins.fasta", emit: Non_human_proteins
-  path "HUMAN_HOMOLOGS.ids", emit: HUMAN_HOMOLOGS_ids
-  path "human_homologs.csv", emit: human_homologs_csv
+  tuple val(name), path("Non_human_proteins.fasta"), emit: Non_human_proteins
+  tuple val(name), path("HUMAN_HOMOLOGS.ids"), emit: HUMAN_HOMOLOGS_ids
+  tuple val(name), path("human_homologs.csv"), emit: human_homologs_csv
 
   stub:
   """
@@ -30,7 +29,7 @@ process HUMAN_HOMOLOGS {
 fi
 
   # Run diamond to find human homologs
-  diamond blastp --query ${virulent_proteins} --db /app/human_db.dmnd --out human_hits.tsv --outfmt 6
+  diamond blastp --query ${virulent_proteins} --db ${params.homologsdb} --out human_hits.tsv --outfmt 6
 
   # Extract hit IDs (proteins that are homologous to human)
   awk '\$11 <= 1e-5 && \$3 >= 30 && \$4 >= 50' human_hits.tsv | cut -f1 | sort | uniq > human_homolog_ids.txt

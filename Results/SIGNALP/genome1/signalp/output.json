@@ -1,0 +1,760 @@
+{
+  "INFO": {
+    "failedjobs": 0,
+    "size": 31
+  },
+  "CSV_FILE": "signalp/prediction_results.txt",
+  "MATURE_FILE": "signalp/processed_entries.fasta",
+  "GFF_FILE": "signalp/output.gff3",
+  "ZIP_FILE": "",
+  "SEQUENCES": {
+    "GPHBMAFA_00030 DNA-binding transcriptional regulator NtrC": {
+      "Name": "GPHBMAFA_00030 DNA-binding transcriptional regulator NtrC",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00030_DNA_binding_transcriptional_regulator_NtrC_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00038 Carboxylesterase NlhH": {
+      "Name": "GPHBMAFA_00038 Carboxylesterase NlhH",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00038_Carboxylesterase_NlhH_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00062 Alcohol dehydrogenase 2": {
+      "Name": "GPHBMAFA_00062 Alcohol dehydrogenase 2",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00062_Alcohol_dehydrogenase_2_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00065 Ribose import ATP-binding protein RbsA": {
+      "Name": "GPHBMAFA_00065 Ribose import ATP-binding protein RbsA",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00065_Ribose_import_ATP_binding_protein_RbsA_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00076 Transcriptional regulatory protein CpxR": {
+      "Name": "GPHBMAFA_00076 Transcriptional regulatory protein CpxR",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00076_Transcriptional_regulatory_protein_CpxR_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00120 HTH-type transcriptional regulator HdfR": {
+      "Name": "GPHBMAFA_00120 HTH-type transcriptional regulator HdfR",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00120_HTH_type_transcriptional_regulator_HdfR_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00140 Transcription termination factor Rho": {
+      "Name": "GPHBMAFA_00140 Transcription termination factor Rho",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00140_Transcription_termination_factor_Rho_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00141 Undecaprenyl-phosphate alpha-N-acetylglucosaminyl 1-phosphate transferase": {
+      "Name": "GPHBMAFA_00141 Undecaprenyl-phosphate alpha-N-acetylglucosaminyl 1-phosphate transferase",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00141_Undecaprenyl_phosphate_alpha_N_acetylglucosaminyl_1_phosphate_transferase_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00143 UDP-N-acetylglucosamine 2-epimerase": {
+      "Name": "GPHBMAFA_00143 UDP-N-acetylglucosamine 2-epimerase",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00143_UDP_N_acetylglucosamine_2_epimerase_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00144 UDP-N-acetyl-D-mannosamine dehydrogenase": {
+      "Name": "GPHBMAFA_00144 UDP-N-acetyl-D-mannosamine dehydrogenase",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00144_UDP_N_acetyl_D_mannosamine_dehydrogenase_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        0.8958,
+        0.1014,
+        0.0021,
+        0.0003,
+        0.0001,
+        0.0002
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00145 dTDP-glucose 4,6-dehydratase 2": {
+      "Name": "GPHBMAFA_00145 dTDP-glucose 4,6-dehydratase 2",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00145_dTDP_glucose_4_6_dehydratase_2_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00148 dTDP-4-amino-4,6-dideoxygalactose transaminase": {
+      "Name": "GPHBMAFA_00148 dTDP-4-amino-4,6-dideoxygalactose transaminase",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00148_dTDP_4_amino_4_6_dideoxygalactose_transaminase_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00208 Bifunctional ligase/repressor BirA": {
+      "Name": "GPHBMAFA_00208 Bifunctional ligase/repressor BirA",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00208_Bifunctional_ligase_repressor_BirA_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00234 Regulator of sigma D": {
+      "Name": "GPHBMAFA_00234 Regulator of sigma D",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00234_Regulator_of_sigma_D_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00243 Transcriptional regulatory protein ZraR": {
+      "Name": "GPHBMAFA_00243 Transcriptional regulatory protein ZraR",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00243_Transcriptional_regulatory_protein_ZraR_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00254 Isocitrate lyase": {
+      "Name": "GPHBMAFA_00254 Isocitrate lyase",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00254_Isocitrate_lyase_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00256 Transcriptional repressor IclR": {
+      "Name": "GPHBMAFA_00256 Transcriptional repressor IclR",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00256_Transcriptional_repressor_IclR_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00283 Maltose/maltodextrin import ATP-binding protein MalK": {
+      "Name": "GPHBMAFA_00283 Maltose/maltodextrin import ATP-binding protein MalK",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00283_Maltose_maltodextrin_import_ATP_binding_protein_MalK_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00297 Quinone oxidoreductase 1": {
+      "Name": "GPHBMAFA_00297 Quinone oxidoreductase 1",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00297_Quinone_oxidoreductase_1_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00304 UvrABC system protein A": {
+      "Name": "GPHBMAFA_00304 UvrABC system protein A",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00304_UvrABC_system_protein_A_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00307 Ferrienterobactin receptor": {
+      "Name": "GPHBMAFA_00307 Ferrienterobactin receptor",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00307_Ferrienterobactin_receptor_plot.txt",
+      "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
+      "Likelihood": [
+        0.0004,
+        0.3403,
+        0.6587,
+        0.0002,
+        0.0002,
+        0.0001
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": "Cleavage site between pos. 17 and 18. Probability 0.634030"
+    },
+    "GPHBMAFA_00324 Guanine/hypoxanthine permease GhxP": {
+      "Name": "GPHBMAFA_00324 Guanine/hypoxanthine permease GhxP",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00324_Guanine_hypoxanthine_permease_GhxP_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00331 Outer membrane usher protein FimD": {
+      "Name": "GPHBMAFA_00331 Outer membrane usher protein FimD",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00331_Outer_membrane_usher_protein_FimD_plot.txt",
+      "Prediction": "Signal Peptide (Sec/SPI)",
+      "Likelihood": [
+        0.0815,
+        0.9101,
+        0.0072,
+        0.0006,
+        0.0003,
+        0.0003
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": "Cleavage site between pos. 43 and 44. Probability 0.821167"
+    },
+    "GPHBMAFA_00341 Transcriptional regulatory protein OmpR": {
+      "Name": "GPHBMAFA_00341 Transcriptional regulatory protein OmpR",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00341_Transcriptional_regulatory_protein_OmpR_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00375 Poly-beta-1,6-N-acetyl-D-glucosamine synthase": {
+      "Name": "GPHBMAFA_00375 Poly-beta-1,6-N-acetyl-D-glucosamine synthase",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00375_Poly_beta_1_6_N_acetyl_D_glucosamine_synthase_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        0.9989,
+        0.0011,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00376 Poly-beta-1,6-N-acetyl-D-glucosamine N-deacetylase": {
+      "Name": "GPHBMAFA_00376 Poly-beta-1,6-N-acetyl-D-glucosamine N-deacetylase",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00376_Poly_beta_1_6_N_acetyl_D_glucosamine_N_deacetylase_plot.txt",
+      "Prediction": "Signal Peptide (Sec/SPI)",
+      "Likelihood": [
+        0.0003,
+        0.9989,
+        0.0002,
+        0.0002,
+        0.0002,
+        0.0002
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": "Cleavage site between pos. 24 and 25. Probability 0.977603"
+    },
+    "GPHBMAFA_00399 Chaperone protein FimC": {
+      "Name": "GPHBMAFA_00399 Chaperone protein FimC",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00399_Chaperone_protein_FimC_plot.txt",
+      "Prediction": "Signal Peptide (Sec/SPI)",
+      "Likelihood": [
+        0.0004,
+        0.9989,
+        0.0003,
+        0.0002,
+        0.0002,
+        0.0001
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": "Cleavage site between pos. 22 and 23. Probability 0.976328"
+    },
+    "GPHBMAFA_00401 hypothetical protein": {
+      "Name": "GPHBMAFA_00401 hypothetical protein",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00401_hypothetical_protein_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00485 hypothetical protein": {
+      "Name": "GPHBMAFA_00485 hypothetical protein",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00485_hypothetical_protein_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00493 Deacetylase": {
+      "Name": "GPHBMAFA_00493 Deacetylase",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00493_Deacetylase_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    },
+    "GPHBMAFA_00509 Magnesium-transporting ATPase, P-type 1": {
+      "Name": "GPHBMAFA_00509 Magnesium-transporting ATPase, P-type 1",
+      "Plot_eps": "",
+      "Plot_png": "",
+      "Plot_txt": "signalp/output_GPHBMAFA_00509_Magnesium_transporting_ATPase__P_type_1_plot.txt",
+      "Prediction": "Other",
+      "Likelihood": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Protein_types": [
+        "Other",
+        "Signal Peptide (Sec/SPI)",
+        "Lipoprotein signal peptide (Sec/SPII)",
+        "TAT signal peptide (Tat/SPI)",
+        "TAT Lipoprotein signal peptide (Tat/SPII)",
+        "Pilin-like signal peptide (Sec/SPIII)"
+      ],
+      "CS_pos": ""
+    }
+  },
+  "FORMAT": "txt",
+  "ORG": "other",
+  "MODE": "fast",
+  "REGION_GFF_FILE": "signalp/region_output.gff3"
+}

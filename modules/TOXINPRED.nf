@@ -5,17 +5,16 @@ process TOXINPRED {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-    publishDir "${params.outdir}/TOXINPRED", mode: "copy"
+    publishDir "${params.outdir}/TOXINPRED/${name}", mode: "copy"
 
     input:
-    path outermembrane_sequences
-    path deeplocpro_csv
+    tuple val(name), path(outermembrane_sequences), path(deeplocpro_csv)
 
     output:
-    path "non_toxins.fasta", emit: non_toxins
-    path "TOXINPRED.ids", emit: TOXINPRED_ids
-    path "toxinpred.csv", emit: toxinpred_csv
-    path "outfile.csv"
+    tuple val(name), path("non_toxins.fasta"), emit: non_toxins
+    tuple val(name), path("TOXINPRED.ids"), emit: TOXINPRED_ids
+    tuple val(name), path("toxinpred.csv"), emit: toxinpred_csv
+    tuple val(name), path("outfile.csv")
 
     stub:
     """

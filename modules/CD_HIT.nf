@@ -3,14 +3,14 @@ process CD_HIT {
 
     publishDir "${params.outdir}/CD_HIT", mode: 'copy'
 
-    container 'biocontainers/cd-hit:v4.6.8-2-deb_cv1'
+    container 'sravankrishna47/cd-hit:latest'
 
     input:
-    path protein_sequences
+    tuple val(name), path(protein_sequences)
 
     output:
-    path "clustered.faa", emit: clustered_proteins
-    path "clustered.faa.clstr"
+    tuple val(name), path("clustered.faa"), emit: clustered_proteins
+    tuple val(name), path("clustered.faa.clstr"), emit: cluster_report
 
     script:
     """

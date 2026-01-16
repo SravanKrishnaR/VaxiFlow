@@ -1,16 +1,15 @@
 process VFDB {
   container 'sravankrishna47/homologyfilter:latest'
 
-  publishDir "${params.outdir}/VFDB", mode: 'copy'
+  publishDir "${params.outdir}/VFDB/${name}", mode: 'copy'
 
   input:
-  path protein_sequences
-  path proteome_csv
+  tuple val(name), path(protein_sequences), path(proteome_csv)
  
   output:
-  path "virulent_proteins.fasta", emit: virulent_proteins
-  path "vfdb.ids", emit: vfdb_ids
-  path "vfdb.csv", emit: vfdb_csv
+  tuple val(name), path("virulent_proteins.fasta"), emit: virulent_proteins
+  tuple val(name), path("vfdb.ids"), emit: vfdb_ids
+  tuple val(name), path("vfdb.csv"), emit: vfdb_csv
 
   stub:
   """
@@ -19,7 +18,7 @@ process VFDB {
 
   script:
   """
-  diamond blastp --query ${protein_sequences} --db /app/VFDB_db.dmnd --out virulence_hits.tsv --outfmt 6
+  diamond blastp --query ${protein_sequences} --db ${params.vfdb} --out virulence_hits.tsv --outfmt 6
   awk '\$11 <= 1e-5 && \$3 >= 30 && \$4 >= 50' virulence_hits.tsv | cut -f1 | sort | uniq > virulence_ids.txt
   seqkit grep -f virulence_ids.txt ${protein_sequences} > virulent_proteins.fasta
 

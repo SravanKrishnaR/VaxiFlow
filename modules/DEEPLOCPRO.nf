@@ -1,21 +1,18 @@
 process DEEPLOCPRO {
-    container 'sravankrishna47/deeplocpro:latest'
-
     errorStrategy {
       task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-    publishDir "${params.outdir}/DEEPLOCPRO", mode: "copy"
+    publishDir "${params.outdir}/DEEPLOCPRO/${name}", mode: "copy"
 
     input:
-    path signalp_sequences
-    path signalp_csv
+    tuple val(name), path(signalp_sequences), path(signalp_csv)
 
     output:
-    path "outer_membrane.fasta", emit: outermembrane_sequences
-    path "DEEPLOCPRO.ids", emit: DEEPLOCPRO_ids
-    path "deeplocpro.csv", emit: deeplocpro_csv
-    path "deeploc_results.csv"
+    tuple val(name), path("outer_membrane.fasta"), emit: outermembrane_sequences
+    tuple val(name), path("DEEPLOCPRO.ids"), emit: DEEPLOCPRO_ids
+    tuple val(name), path("deeplocpro.csv"), emit: deeplocpro_csv
+    tuple val(name), path("deeploc_results.csv")
 
     stub:
     """

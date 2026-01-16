@@ -1,33 +1,25 @@
 process MHC_I {
-   conda "${projectDir}/bin/envs/mhc_iedb.yml"
-
+   container 'iedb_mhc_i:latest'    
+ 
    errorStrategy {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-   publishDir "${params.outdir}/MHC_I", mode: "copy"
+   publishDir "${params.outdir}/MHC_I/${name}", mode: "copy"
 
    input:
-   path TMR_sequence
-   path MHC_I
-   path deepthmmm_csv
+   tuple val(name), path(PHOBIUS_fasta), path(phobius_csv)
 
    output:
-   path "*.csv"
-
-   stub:
-   """
-   echo 'peptide,score' > filtered_predictions.csv
-   echo 'MVKELTNVL,0.92' >> filtered_predictions.csv
-   """
+   tuple val(name), path(PHOBIUS_fasta), path(phobius_csv), path("*.txt"), emit: MHC_I_out
 
    script:
    """
-   if [[ '${params.mode}' == 'filtered' && ! -s "${TMR_sequence}" ]]; then
-    echo "MHC_I: Input file TMR_sequence is empty."
+   if [[ '${params.mode}' == 'filtered' && ! -s "${PHOBIUS_fasta}" ]]; then
+    echo "MHC_I: Input file PHOBIUS_fasta is empty."
     exit 100
 fi
 
-   python ${MHC_I} --input ${TMR_sequence}
+   python3 /app/MHC_I.py --fasta ${PHOBIUS_fasta} --method ${params.MHC_I_method} --length ${params.MHC_I_length} --alleles ${params.MHC_I_alleles}
    """
 }

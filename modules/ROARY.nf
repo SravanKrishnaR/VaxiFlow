@@ -15,7 +15,7 @@ process ROARY {
 
     script:
     """
-    roary -p ${tasks.cpus} -e -n -s -i ${params.identity} ${gff_ch.join(' ')}
+    roary -p ${params.cpus} -e -n -s -i ${params.identity} ${gff_ch.join(' ')}
     """
 
 }

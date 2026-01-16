@@ -1,11 +1,11 @@
 process PROTEOME_IDS {
-    publishDir "${params.outdir}/PROTEOME_IDS", mode: 'copy'
+    publishDir "${params.outdir}/PROTEOME_IDS/${name}", mode: 'copy'
 
     input:
-    path clustered_proteins
+    tuple val(name), path(clustered_proteins)
 
     output:
-    path "proteome.csv", emit: proteome_csv
+    tuple val(name), path("proteome.csv"), emit: proteome_csv
 
     script:
     """

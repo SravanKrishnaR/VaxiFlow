@@ -10,8 +10,8 @@ params.proteome = null
 
 workflow {
 if (params.proteome) {
-        protein_sequences = Channel.fromPath(params.proteome)
-        PIPELINE_PROTEOME(protein_sequences)
+        protein_sequences_ch = Channel.fromPath(params.proteome).map{ file -> tuple(file.baseName,file) }
+        PIPELINE_PROTEOME(protein_sequences_ch)
 }
 
 if (params.genomes) {

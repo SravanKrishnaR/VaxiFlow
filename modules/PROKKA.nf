@@ -2,20 +2,20 @@ process PROKKA {
     label 'process_single'
     tag "${meta}"
 
-    container 'staphb/prokka'
+    container 'staphb/prokka:latest'
     publishDir "${params.outdir}/PROKKA", mode: 'copy'
 
     input:
     tuple val(meta), path(genome)
 
     output:
-    tuple val(meta), path("${meta}.gff"), emit: gff_output 
-    path("${meta}.faa"), emit: protein_sequences
-
+    tuple val(meta), path("${meta}.gff"), emit: gff_output
+    tuple val(meta), path("${meta}.faa"), emit: protein_sequences
+ 
     script:
     """
     mkdir -p ${meta}
-    prokka --force --cpu ${task.cpus} --kingdom ${params.kingdom} --prefix ${meta} --outdir ${meta} --gram ${params.gram} ${genome}
+    prokka --force --cpu ${task.cpus} --kingdom ${params.kingdom} --prefix ${meta} --outdir ${meta} ${genome}
     cp ${meta}/${meta}.gff .
     cp ${meta}/${meta}.faa .
     """

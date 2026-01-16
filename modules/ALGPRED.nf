@@ -5,17 +5,16 @@ process ALGPRED {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
 
-  publishDir "${params.outdir}/ALGPRED", mode: "copy"
+  publishDir "${params.outdir}/ALGPRED/${name}", mode: "copy"
 
   input:
-  path Non_human_proteins
-  path human_homologs_csv
+  tuple val(name), path(Non_human_proteins), path(human_homologs_csv)
 
   output:
-  path "non_allergen_sequences.fasta", emit: non_allergen_sequences
-  path "ALGPRED.ids", emit: ALGPRED_ids
-  path "algpred.csv", emit: algpred_csv
-  path "result_allergen.csv"
+  tuple val(name), path("non_allergen_sequences.fasta"), emit: non_allergen_sequences
+  tuple val(name), path("ALGPRED.ids"), emit: ALGPRED_ids
+  tuple val(name), path("algpred.csv"), emit: algpred_csv
+  tuple val(name), path("result_allergen.csv"), emit: result_allergen_csv
   
   stub:
   """
@@ -73,3 +72,4 @@ FNR==1 {
 
   """
 }
+

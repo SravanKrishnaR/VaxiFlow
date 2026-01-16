@@ -9,7 +9,7 @@ process ROARY_2 {
     path pan_genome_reference
 
     output:
-    path("protein_sequences.fasta"), emit: protein_sequences
+    tuple val("core_genome"), path("protein_sequences.fasta"), emit: protein_sequences
 
     script:
     """

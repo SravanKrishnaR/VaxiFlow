@@ -5,17 +5,16 @@ process SIGNALP {
         params.mode == 'filtered' ? 'terminate' : 'ignore'
     }
 
-    publishDir "${params.outdir}/SIGNALP", mode: "copy"
+    publishDir "${params.outdir}/SIGNALP/${name}", mode: "copy"
 
     input:
-    path non_allergen_sequences
-    path algpred_csv
+    tuple val(name), path(non_allergen_sequences), path(algpred_csv)
  
     output:
-    path "signalp/processed_entries.fasta", emit: signalp_sequences
-    path "SIGNALP.ids", emit: SIGNALP_ids
-    path "signalp.csv", emit: signalp_csv
-    path "signalp"
+    tuple val(name), path("signalp/processed_entries.fasta"), emit: signalp_sequences
+    tuple val(name), path("SIGNALP.ids"), emit: SIGNALP_ids
+    tuple val(name), path("signalp.csv"), emit: signalp_csv
+    tuple val(name), path("signalp")
 
     stub:
     """
