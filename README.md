@@ -1,130 +1,101 @@
 # VaxiFlow
-VaxiFlow, An automated Nextflow based pipeline for reverse vaccinology that streamlines vaccine candidate discovery through comprehensive antigen prediction, filtering, and prioritization workflows.
-
-**Installation**
-```bash
-git clone https://github.com/SravanKrishnaR/VaxiFlow.git
-```
+VaxiFlow, An automated Nextflow based pipeline for protein prioritization through reverse vaccinology methodology that streamlines vaccine candidate discovery.
 
 **Requirements:**
 `Nextflow >= 25.04.6.5954` 
 `Docker` 
 
+**HELP**
+```bash
+nextflow run SravanKrishnaR/VaxiFlow --help
+```
+
 **FOR PROTEOME ANALYSIS**
 ```bash
-nextflow run main.nf --proteome <input data> <parameters>
+nextflow run SravanKrishnaR/VaxiFlow --proteome <input data> <parameters> -profile docker/singularity
 ```
 
-**FOR MULTI-GENOME ANALYSIS**
+**FOR GENOME ANALYSIS**
 ```bash
-nextflow run main.nf --genomes <input data> <parameters>
+nextflow run SravanKrishnaR/VaxiFlow --genome <input data> <parameters> -profile docker/singularity
 ```
 
-**FOR SINGLE GENOME ANALYSIS**
+**FOR PANGENOME ANALYSIS**
 ```bash
-nextflow run main.nf --genome <input data> <parameters>
+nextflow run SravanKrishnaR/VaxiFlow --pangenome <input data> <parameters> -profile docker/singularity
 ```
 
-**MODES:**
+**MODES:**<br>
+RUN CANDIDATES AGAINST EACH TOOL INDIVIDUALLY (default)
+```bash
+--mode unfiltered
+```
+
 EACH OUTPUT GETS FILTERED
 ```bash
---filtered
-```
-RUN EACH TOOL INDIVIDUALLY
-```bash
---unfiltered
+--mode filtered
 ```
 
 <img width="2550" height="1986" alt="Image" src="https://github.com/user-attachments/assets/ba09b30e-29a4-4947-a35f-81f5e2f6b9fe" />
 
-```
-Pipeline Configuration Parameters
-Parameter       Default Value  
---cpus            12                    
---memory          8 GB                           
---outdir          Results                        
---publish_mode    copy            
---pipeline_report pipeline_report 
---monochrome_logs false
 
------------------------------------------------------------------------------------------------------------------------
-| Tool           | Parameter            | Default value                              | Value used                     |
-|----------------|----------------------|--------------------------------------------|--------------------------------|
-| ROARY          | --identity           | 95                                         | 95                             |
-|                |                      |                                            |                                |
-| CD-HIT         | --SequenceIdentity   | 0.9                                        | 0.9                            |
-|                | --WordLength         | 5                                          | 5                              |
-|                | --DescpLength        | 0                                          | 0                              |
-|                |                      |                                            |                                |
-| PROKKA         | --kingdom            | Bacteria                                   | Archaea, Mitochondria, Viruses |
-|                |                      |                                            |                                |
-| TOXINPRED      | --threshold          | 0.38                                       | 0–1                            |
-|                | --model              | 1                                          | 1, 2                           |
-|                |                      |                                            |                                |
-| DEEPLOCPRO     | --group              | negative                                   | archaea, positive              |
-|                | --device             | cpu                                        | cuda, mps                      |
-|                |                      |                                            |                                |
-| ALGPRED        | --threshold          | 0.3                                        | 0–1                            |
-|                |                      |                                            |                                |
-| SIGNALP        | --organism           | other                                      | eukarya                        |
-|                | --signalpMode        | fast                                       | slow, slow-sequential          |
-|                |                      |                                            |                                |
-| HUMAN_HOMOLOGS | --homologsdb         | '/app/human_db.dmnd'                       |                                |
-|                |                      |                                            |                                |
-| VFDB           | --vfdb               | '/app/VFDB_db.dmnd'                        |                                |
-|                |                      |                                            |                                |
-| MHC_I          | --MHC_I_method       | ann                                        |                                |
-|                | --MHC_I_length       | 11                                         |                                |
-|                | --MHC_I_alleles      | "/app/Resources/ann_human_allele.txt"      |                                |
-|                |                      |                                            |                                |
-|  MHC_II        | --MHC_II_method      | consensus3                                 |                                |
-|                | --MHC_II_length      | 15                                         |                                |
-|                | --MHC_II_alleles     | "/app/Resources/consensus3_alleles.txt"    |                                |   
-|                |                      |                                            |                                |
------------------------------------------------------------------------------------------------------------------------
+**Pipeline Configuration Parameters**
 ```
+Parameter             Default Value  
+--cpus                12                    
+--memory              8 GB                           
+--outdir              Results                        
+--publish_mode        copy            
+--pipeline_report     pipeline_report 
+--monochrome_logs     false
+--mode                unfiltered
+```
+
+| Tool           | Parameter            | Default value                              | Value used                                   |
+|----------------|----------------------|--------------------------------------------|----------------------------------------------|
+| ROARY          | --identity           | 95                                         | 95                                           |
+|                |                      |                                            |                                              |
+| CD-HIT         | --SequenceIdentity   | 0.9                                        | 0.9                                          |
+|                | --WordLength         | 5                                          | 5                                            |
+|                | --DescpLength        | 0                                          | 0                                            |
+|                |                      |                                            |                                              |
+| PROKKA         | --kingdom            | Bacteria                                   | Archaea, Mitochondria, Viruses               |
+|                |                      |                                            |                                              |
+| TOXINPRED      | --threshold          | 0.38                                       | 0–1                                          |
+|                | --model              | 1                                          | 1, 2                                         |
+|                |                      |                                            |                                              |
+| DEEPLOCPRO     | --group              | negative                                   | archaea, positive                            |  
+|                | --device             | cpu                                        | cuda, mps                                    |
+|                |                      |                                            |                                              |
+| ALGPRED        | --threshold          | 0.3                                        | 0–1                                          |
+|                |                      |                                            |                                              |
+| SIGNALP        | --organism           | other                                      | eukarya                                      |
+|                | --signalpMode        | fast                                       | slow, slow-sequential                        |
+|                |                      |                                            |                                              |
+| HUMAN_HOMOLOGS | --homologsdb         | '/app/human_db.dmnd'                       |                                              |
+|                |                      |                                            |                                              |
+| VFDB           | --vfdb               | '/app/VFDB_db.dmnd'                        |                                              |
+|                |                      |                                            |                                              |  
+| MHC_I          | --MHC_I_method       | ann                                        | netmhcpan_el, netmhcpan_ba                   |
+|                | --MHC_I_length       | 11                                         |                                              |
+|                | --MHC_I_alleles      | "/app/Resources/ann_human_allele.txt"      |                                              |
+|                |                      |                                            |                                              |
+|  MHC_II        | --MHC_II_method      | consensus3                                 |  comblib, smm_align, nn_align,               |
+|                |                      |                                            |  sturniolo, netmhciipan_el, netmhciipan_ba,  |
+|                |                      |                                            |  netmhciipan_el-4.3, netmhciipan_el-4.2,     |
+|                |                      |                                            |  netmhciipan_ba-4.3, netmhciipan_ba-4.2      |
+|                | --MHC_II_length      | 15                                         |                                              |
+|                | --MHC_II_alleles     | "/app/Resources/consensus3_alleles.txt"    |                                              |
+
+
 
 **TEST PROFILES**
 ```bash
-nextflow run main.nf -profile test_proteome --mode filtered
+nextflow run SravanKrishnaR/VaxiFlow -profile test_proteome,docker
 ```
 ```bash
-nextflow run main.nf -profile test_genome --mode filtered
+nextflow run SravanKrishnaR/VaxiFlow -profile test_genome,docker 
 ```
 ```bash
-nextflow run main.nf -profile test_batchgenome --mode filtered
+nextflow run SravanKrishnaR/VaxiFlow -profile test_pangenome,docker 
 ```
-
-## Credits
-
-This pipeline integrates several third-party tools and databases. We gratefully acknowledge the authors and maintainers of the following resources:
-
-- **VFDB** (Virulence Factors Database)  
-  VFDB 2022: a general classification scheme for bacterial virulence factors   
-  Website: https://www.mgc.ac.cn/VFs/
-
-- **HUMAN HOMOLOGS** (NCBI BLAST Human Protein Database)  
-  National Center for Biotechnology Information.  
-  Website: https://www.ncbi.nlm.nih.gov/
-
-- **AlgPred 2.0**  
-  AlgPred 2.0: an improved method for predicting allergenic proteins and mapping of IgE epitopes  
-  Website: https://webs.iiitd.edu.in/raghava/algpred2/
-
-- **SignalP 6.0**  
-  SignalP 6.0 predicts all five types of signal peptides using protein language models  
-  Website: https://services.healthtech.dtu.dk/services/SignalP-6.0/
-
-- **DeepLocPro-1.0**  
-  Predicting the subcellular location of prokaryotic proteins with DeepLocPro  
-  Website: https://services.healthtech.dtu.dk/services/DeepLocPro-1.0/
-
-- **ToxinPred 3.0**  
-  ToxinPred 3.0: An improved method for predicting the toxicity of peptides
-  Website: https://webs.iiitd.edu.in/raghava/toxinpred3/
-
-- **DeepTMHMM-1.0**  
-  DeepTMHMM predicts alpha and beta transmembrane proteins using deep neural networks
-  Website: https://services.healthtech.dtu.dk/services/DeepTMHMM-1.0/
-
-This is my current github read me
