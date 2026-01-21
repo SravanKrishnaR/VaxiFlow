@@ -16,7 +16,7 @@ include { PROTPARAM }      from '../modules/PROTPARAM.nf'
 include { CD_HIT }         from '../modules/CD_HIT.nf'
 
 
-workflow PIPELINE_BATCH_GENOME {
+workflow PIPELINE_PANGENOME {
     take:
         genome_sequences
 

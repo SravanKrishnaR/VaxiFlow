@@ -1,9 +1,9 @@
 include { PIPELINE_PROTEOME }       from './subworkflows/proteome_pipeline.nf'
-include { PIPELINE_BATCH_GENOME }   from './subworkflows/batch_genome_pipeline.nf'
+include { PIPELINE_PANGENOME }      from './subworkflows/pangenome_pipeline.nf'
 include { PIPELINE_GENOME }         from './subworkflows/genome_pipeline.nf'
 include { paramsHelp }              from 'plugin/nf-schema'
 
-params.genomes  = null
+params.pangenome  = null
 params.genome  = null
 params.proteome = null
 
@@ -14,9 +14,9 @@ if (params.proteome) {
         PIPELINE_PROTEOME(protein_sequences_ch)
 }
 
-if (params.genomes) {
-        genome_sequences = Channel.fromPath(params.genomes)
-        PIPELINE_BATCH_GENOME(genome_sequences)
+if (params.pangenome) {
+        genome_sequences = Channel.fromPath(params.pangenome)
+        PIPELINE_PANGENOME(genome_sequences)
 }
 
 if (params.genome) {
