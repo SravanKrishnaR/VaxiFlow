@@ -1,18 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VaxiFlow",
-  "description": "Automated reverse vaccinology pipeline for protein prioritization of genome and proteome-based vaccine candidate discovery",
+  "description": "Automated reverse vaccinology pipeline for protein prioritization of genome, proteome, and pangenome-based vaccine candidate discovery",
 
   "$defs": {
-    "INPUT MODE": {
+    "INPUT_MODE": {
       "description": "Define the biological input used to run the pipeline. Exactly one input mode must be provided.",
       "properties": {
         "genome": {
           "description": "Single genome FASTA file for analysis",
           "format": "file-path"
         },
-        "genomes": {
-          "description": "Multiple genome FASTA files for batch analysis",
+        "pangenome": {
+          "description": "Multiple genome FASTA files for pangenome analysis",
           "format": "file-path"
         },
         "proteome": {
@@ -22,7 +22,7 @@
       }
     },
 
-    "PIPELINE CONFIGURATIONS": {
+    "PIPELINE_CONFIG": {
       "properties": {
         "outdir": {
           "description": "Directory where pipeline results will be written",
@@ -53,13 +53,13 @@
       }
     },
 
-    "EXECUTION MODE": {
+    "EXECUTION_MODE": {
       "properties": {
         "mode": {
-          "description": "Run the pipeline with all filtering steps enabled",
+          "description": "Pipeline execution mode",
           "enum": ["filtered", "unfiltered"],
-          "default": "filtered"
-        },
+          "default": "unfiltered"
+        }
       }
     },
 
@@ -71,8 +71,8 @@
           "default": "Bacteria"
         },
         "gram": {
-          "description": "Gram staining classification for genome annotation",
-          "enum": ["pos", "neg", "''"],
+          "description": "Gram staining classification",
+          "enum": ["pos", "neg", ""],
           "default": "neg"
         }
       }
@@ -87,18 +87,18 @@
       }
     },
 
-    "CD-HIT": {
+    "CDHIT": {
       "properties": {
         "SequenceIdentity": {
-          "description": "Sequence identity threshold for clustering",
+          "description": "Sequence identity threshold",
           "default": 0.9
         },
         "WordLength": {
-          "description": "Word length for CD-HIT clustering",
+          "description": "Word length for clustering",
           "default": 5
         },
         "DescpLength": {
-          "description": "Description length in CD-HIT output",
+          "description": "Description length in output",
           "default": 0
         }
       }
@@ -106,29 +106,29 @@
 
     "TOXINPRED": {
       "properties": {
-        "ToxinThreshold": {
-          "description": "Prediction score threshold for toxin classification",
+        "threshold": {
+          "description": "Toxicity prediction threshold",
           "minimum": 0,
           "maximum": 1,
           "default": 0.38
         },
         "model": {
-          "description": "Prediction model to use (1: AAC+DPC ET, 2: Hybrid)",
+          "description": "Prediction model",
           "enum": [1, 2],
           "default": 1
-        },
+        }
       }
     },
 
     "DEEPLOCPRO": {
       "properties": {
         "group": {
-          "description": "Organism group for localization prediction",
+          "description": "Organism group",
           "enum": ["negative", "positive", "archaea"],
           "default": "negative"
         },
         "device": {
-          "description": "Compute device used for prediction",
+          "description": "Compute device",
           "enum": ["cpu", "cuda", "mps"],
           "default": "cpu"
         }
@@ -137,12 +137,12 @@
 
     "ALGPRED": {
       "properties": {
-        "AllergenThreshold": {
-          "description": "Prediction score threshold for allergenicity",
+        "threshold": {
+          "description": "Allergenicity threshold",
           "minimum": 0,
           "maximum": 1,
           "default": 0.3
-        },
+        }
       }
     },
 
@@ -159,12 +159,82 @@
           "default": "fast"
         }
       }
+    },
+
+    "HUMAN_HOMOLOGS": {
+      "properties": {
+        "homologsdb": {
+          "description": "Human homologs DIAMOND database",
+          "default": "/app/human_db.dmnd",
+          "format": "file-path"
+        }
+      }
+    },
+
+    "VFDB": {
+      "properties": {
+        "vfdb": {
+          "description": "VFDB DIAMOND database",
+          "default": "/app/VFDB_db.dmnd",
+          "format": "file-path"
+        }
+      }
+    },
+
+    "MHC_I": {
+      "properties": {
+        "MHC_I_method": {
+          "description": "MHC I prediction method",
+          "enum": ["ann", "netmhcpan_el", "netmhcpan_ba"],
+          "default": "ann"
+        },
+        "MHC_I_length": {
+          "description": "Peptide length",
+          "default": 11
+        },
+        "MHC_I_alleles": {
+          "description": "Allele list file",
+          "default": "/app/Resources/ann_human_allele.txt",
+          "format": "file-path"
+        }
+      }
+    },
+
+    "MHC_II": {
+      "properties": {
+        "MHC_II_method": {
+          "description": "MHC II prediction method",
+          "enum": [
+            "consensus3",
+            "comblib",
+            "smm_align",
+            "nn_align",
+            "sturniolo",
+            "netmhciipan_el",
+            "netmhciipan_ba",
+            "netmhciipan_el-4.3",
+            "netmhciipan_el-4.2",
+            "netmhciipan_ba-4.3",
+            "netmhciipan_ba-4.2"
+          ],
+          "default": "consensus3"
+        },
+        "MHC_II_length": {
+          "description": "Peptide length",
+          "default": 15
+        },
+        "MHC_II_alleles": {
+          "description": "Allele list file",
+          "default": "/app/Resources/consensus3_alleles.txt",
+          "format": "file-path"
+        }
+      }
     }
   },
 
   "properties": {
     "help": {
-      "description": "Show pipeline help message"
+      "description": "Show pipeline help"
     },
     "helpFull": {
       "description": "Show full help including nested parameters"

@@ -1,5 +1,5 @@
 process B_CELL {
-    container 'iedb_bcell:latest'
+    container 'sravankrishna47/iedb_bcell:latest'
 
     errorStrategy {
     task.exitStatus == 100 ? 'ignore' : 'terminate'

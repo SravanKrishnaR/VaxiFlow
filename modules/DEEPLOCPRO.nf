@@ -1,4 +1,6 @@
 process DEEPLOCPRO {
+   container 'sravankrishna47/deeplocpro:latest'
+
     errorStrategy {
       task.exitStatus == 100 ? 'ignore' : 'terminate'
 }

@@ -51,41 +51,41 @@ Parameter             Default Value
 --mode                unfiltered
 ```
 
-| Tool           | Parameter            | Default value                              | Value used                                   |
+| Tool           | Parameter            | Default value                              | Values                                       |
 |----------------|----------------------|--------------------------------------------|----------------------------------------------|
 | ROARY          | --identity           | 95                                         | 95                                           |
 |                |                      |                                            |                                              |
-| CD-HIT         | --SequenceIdentity   | 0.9                                        | 0.9                                          |
-|                | --WordLength         | 5                                          | 5                                            |
-|                | --DescpLength        | 0                                          | 0                                            |
+| CD-HIT         | --SequenceIdentity   | 0.9                                        |                                              |
+|                | --WordLength         | 5                                          |                                              |
+|                | --DescpLength        | 0                                          |                                              |
 |                |                      |                                            |                                              |
-| PROKKA         | --kingdom            | Bacteria                                   | Archaea, Mitochondria, Viruses               |
+| PROKKA         | --kingdom            | Bacteria                                   | Bacteria, Archaea, Mitochondria, Viruses     |
 |                |                      |                                            |                                              |
 | TOXINPRED      | --threshold          | 0.38                                       | 0–1                                          |
 |                | --model              | 1                                          | 1, 2                                         |
 |                |                      |                                            |                                              |
-| DEEPLOCPRO     | --group              | negative                                   | archaea, positive                            |  
-|                | --device             | cpu                                        | cuda, mps                                    |
+| DEEPLOCPRO     | --group              | negative                                   | negative, archaea, positive                  | 
+|                | --device             | cpu                                        | cpu, cuda, mps                               |
 |                |                      |                                            |                                              |
 | ALGPRED        | --threshold          | 0.3                                        | 0–1                                          |
 |                |                      |                                            |                                              |
-| SIGNALP        | --organism           | other                                      | eukarya                                      |
-|                | --signalpMode        | fast                                       | slow, slow-sequential                        |
+| SIGNALP        | --organism           | other                                      | eukarya, other                               |
+|                | --signalpMode        | fast                                       | fast, slow, slow-sequential                  |
 |                |                      |                                            |                                              |
-| HUMAN_HOMOLOGS | --homologsdb         | '/app/human_db.dmnd'                       |                                              |
+| HUMAN_HOMOLOGS | --homologsdb         | '/app/human_db.dmnd'                       | users can provide thier custom database      |
 |                |                      |                                            |                                              |
-| VFDB           | --vfdb               | '/app/VFDB_db.dmnd'                        |                                              |
-|                |                      |                                            |                                              |  
-| MHC_I          | --MHC_I_method       | ann                                        | netmhcpan_el, netmhcpan_ba                   |
+| VFDB           | --vfdb               | '/app/VFDB_db.dmnd'                        | users can provide thier custom database      |
+|                |                      |                                            |                                              | 
+| MHC_I          | --MHC_I_method       | ann                                        | ann, netmhcpan_el, netmhcpan_ba              |
 |                | --MHC_I_length       | 11                                         |                                              |
 |                | --MHC_I_alleles      | "/app/Resources/ann_human_allele.txt"      |                                              |
 |                |                      |                                            |                                              |
-|  MHC_II        | --MHC_II_method      | consensus3                                 |  comblib, smm_align, nn_align,               |
-|                |                      |                                            |  sturniolo, netmhciipan_el, netmhciipan_ba,  |
-|                |                      |                                            |  netmhciipan_el-4.3, netmhciipan_el-4.2,     |
-|                |                      |                                            |  netmhciipan_ba-4.3, netmhciipan_ba-4.2      |
+|  MHC_II        | --MHC_II_method      | consensus3                                 | consensus3, comblib, smm_align, nn_align,    |
+|                |                      |                                            | sturniolo, netmhciipan_el, netmhciipan_ba,   | 
+|                |                      |                                            | netmhciipan_el-4.3, netmhciipan_el-4.2,      |
+|                |                      |                                            | netmhciipan_ba-4.3, netmhciipan_ba-4.2       |
 |                | --MHC_II_length      | 15                                         |                                              |
-|                | --MHC_II_alleles     | "/app/Resources/consensus3_alleles.txt"    |                                              |
+|                | --MHC_II_alleles     | "/app/Resources/consensus3_alleles.txt"    | users can provide thier custom alleles       |
 
 
 

@@ -1,5 +1,5 @@
 process PHOBIUS {
-    container 'phobius:latest'
+    container 'sravankrishna47/phobius:latest'
 
     publishDir "${params.outdir}/PHOBIUS/${name}", mode: "copy"
 

@@ -1,5 +1,5 @@
 process MHC_II {
-   container 'iedb_mhc_ii'
+   container 'sravankrishna47/iedb_mhc_ii'
    
    errorStrategy {
 	task.exitStatus == 100 ? 'ignore' : 'terminate'
