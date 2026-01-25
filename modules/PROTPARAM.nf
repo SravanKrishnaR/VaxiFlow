@@ -1,4 +1,6 @@
 process PROTPARAM {
+
+  container 'sravankrishna47/protparam:latest'
   errorStrategy {
     task.exitStatus == 100 ? 'ignore' : 'terminate'
 }
