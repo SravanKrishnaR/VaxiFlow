@@ -36,8 +36,7 @@ EACH OUTPUT GETS FILTERED
 --mode filtered
 ```
 
-<img width="2550" height="1986" alt="Image" src="https://github.com/user-attachments/assets/ba09b30e-29a4-4947-a35f-81f5e2f6b9fe" />
-
+<img width="2588" height="1941" alt="Image" src="https://github.com/user-attachments/assets/673947a3-51a1-47c2-a53e-8d6c5a3acfb5" />
 
 **Pipeline Configuration Parameters**
 ```
